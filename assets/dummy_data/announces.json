@@ -1,0 +1,58 @@
+[{
+        "id": 1,
+        "user": {
+            "id": 1,
+            "username": "عبد الحميد",
+            "profilePicture": "assets/images/1.jpg",
+            "rating": 2.5
+        },
+        "title": "تشطيب شقة",
+        "date": "2023-02-02 19:20:34.123",
+        "state": "قيد المعاينة",
+        "numberOfOffers": 0,
+        "images": [
+            "assets/images/1.jpg",
+            "assets/images/2.jpg"
+        ]
+    },
+    {
+        "id": 2,
+        "user": {
+            "id": 2,
+            "username": "محمد",
+            "profilePicture": "assets/images/1.jpg",
+            "rating": 3.5
+        },
+        "title": "تجديد فيلا",
+        "state": "عروض الأسعار",
+        "date": "2023-01-07 19:20:34.123",
+        "numberOfOffers": 12,
+        "images": [
+            "assets/images/1.jpg",
+            "assets/images/2.jpg",
+            "assets/images/1.jpg",
+            "assets/images/2.jpg"
+        ]
+    },
+    {
+        "id": 3,
+        "user": {
+            "id": 3,
+            "username": "رضا",
+            "profilePicture": "assets/images/1.jpg",
+            "rating": 4
+        },
+        "title": "تجديد فيلا",
+        "state": "قيد المعاينة",
+        "date": "2023-01-27 19:20:34.123",
+        "numberOfOffers": 9,
+        "images": [
+            "assets/images/1.jpg",
+            "assets/images/2.jpg",
+            "assets/images/1.jpg",
+            "assets/images/2.jpg",
+            "assets/images/1.jpg",
+            "assets/images/2.jpg"
+        ]
+    }
+]

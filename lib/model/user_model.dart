@@ -1,11 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
-
 class UserModel {
   int id;
   String username;
   String profilePicture;
-  int rating;
+  double rating;
   UserModel({
     required this.id,
     required this.username,
@@ -13,7 +10,7 @@ class UserModel {
     required this.rating,
   });
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'id': id,
       'username': username,
@@ -22,19 +19,14 @@ class UserModel {
     };
   }
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
+  factory UserModel.fromJson(Map<String, dynamic> map) {
     return UserModel(
       id: map['id'] as int,
       username: map['username'] as String,
       profilePicture: map['profilePicture'] as String,
-      rating: map['rating'] as int,
+      rating: map['rating'] as double,
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory UserModel.fromJson(String source) =>
-      UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {

@@ -9,11 +9,16 @@
         "title": "تشطيب شقة",
         "date": "2023-02-02 19:20:34.123",
         "state": "قيد المعاينة",
-        "numberOfOffers": 0,
+        "numberOfOffers": 2,
         "images": [
             "assets/images/1.jpg",
             "assets/images/2.jpg"
+        ],
+        "usersProfilePicture": [
+            "assets/images/1.jpg",
+            "assets/images/2.jpg"
         ]
+
     },
     {
         "id": 2,
@@ -32,6 +37,20 @@
             "assets/images/2.jpg",
             "assets/images/1.jpg",
             "assets/images/2.jpg"
+        ],
+        "usersProfilePicture": [
+            "assets/images/1.jpg",
+            "assets/images/2.jpg",
+            "assets/images/1.jpg",
+            "assets/images/2.jpg",
+            "assets/images/1.jpg",
+            "assets/images/2.jpg",
+            "assets/images/1.jpg",
+            "assets/images/2.jpg",
+            "assets/images/1.jpg",
+            "assets/images/2.jpg",
+            "assets/images/1.jpg",
+            "assets/images/2.jpg"
         ]
     },
     {
@@ -40,13 +59,24 @@
             "id": 3,
             "username": "رضا",
             "profilePicture": "assets/images/1.jpg",
-            "rating": 4
+            "rating": 4.3
         },
         "title": "تجديد فيلا",
         "state": "قيد المعاينة",
         "date": "2023-01-27 19:20:34.123",
         "numberOfOffers": 9,
         "images": [
+            "assets/images/1.jpg",
+            "assets/images/2.jpg",
+            "assets/images/1.jpg",
+            "assets/images/2.jpg",
+            "assets/images/1.jpg",
+            "assets/images/2.jpg"
+        ],
+        "usersProfilePicture": [
+            "assets/images/2.jpg",
+            "assets/images/1.jpg",
+            "assets/images/2.jpg",
             "assets/images/1.jpg",
             "assets/images/2.jpg",
             "assets/images/1.jpg",

@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:architect_hub/model/user_model.dart';
 
 class PortifolioModel {
@@ -9,24 +8,24 @@ class PortifolioModel {
     required this.images,
   });
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return <String, dynamic>{
-      'user': user.toMap(),
+      'user': user.toJson(),
       'images': images,
     };
   }
 
-  factory PortifolioModel.fromMap(Map<String, dynamic> map) {
+  factory PortifolioModel.fromJson(Map<String, dynamic> map) {
     return PortifolioModel(
-      user: UserModel.fromMap(map['user'] as Map<String, dynamic>),
-      images: List<String>.from((map['images'] as List<String>)),
+      user: UserModel.fromJson(map['user']),
+      images: List<String>.from(map['images'].map((x) => x)),
     );
   }
 
-  String toJson() => json.encode(toMap());
-
-  factory PortifolioModel.fromJson(String source) =>
-      PortifolioModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  static List<PortifolioModel> listFromJson(dynamic json) =>
+      List<PortifolioModel>.from(
+        json.map((model) => PortifolioModel.fromJson(model)),
+      );
 
   @override
   String toString() => 'PortifolioModel(user: $user, images: $images)';

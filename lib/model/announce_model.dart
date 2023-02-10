@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:architect_hub/model/user_model.dart';
 
 class AnnounceModel {
@@ -8,6 +7,7 @@ class AnnounceModel {
   String title;
   DateTime date;
   int numberOfOffers;
+  List<String> images;
   List<String> usersProfilePicture;
   AnnounceModel({
     required this.id,
@@ -17,41 +17,45 @@ class AnnounceModel {
     required this.date,
     required this.numberOfOffers,
     required this.usersProfilePicture,
+    required this.images,
   });
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'id': id,
-      'user': user.toMap(),
+      'user': user.toJson(),
       'state': state,
       'title': title,
       'date': date.millisecondsSinceEpoch,
       'numberOfOffers': numberOfOffers,
       'usersProfilePicture': usersProfilePicture,
+      'images': images,
     };
   }
 
-  factory AnnounceModel.fromMap(Map<String, dynamic> map) {
+  factory AnnounceModel.fromJson(Map<String, dynamic> map) {
     return AnnounceModel(
-        id: map['id'] as int,
-        user: UserModel.fromMap(map['user'] as Map<String, dynamic>),
-        state: map['state'] as String,
-        title: map['title'] as String,
-        // Ex: map['data'] = "1974-03-20 00:00:00.000"
-        date: DateTime.parse(map['date'] as String),
-        numberOfOffers: map['numberOfOffers'] as int,
-        usersProfilePicture: List<String>.from(
-          (map['usersProfilePicture'] as List<String>),
-        ));
+      id: map['id'] as int,
+      user: UserModel.fromJson(map['user']),
+      state: map['state'] as String,
+      title: map['title'] as String,
+      // Ex: map['data'] = "1974-03-20 00:00:00.000"
+      date: DateTime.parse(map['date'] as String),
+      numberOfOffers: map['numberOfOffers'] as int,
+      // images: List<String>.from(json["images"].map((x) => x)),
+      usersProfilePicture:
+          List<String>.from(map['usersProfilePicture'].map((x) => x)),
+      images: List<String>.from(map['images'].map((x) => x)),
+    );
   }
 
-  String toJson() => json.encode(toMap());
-
-  factory AnnounceModel.fromJson(String source) =>
-      AnnounceModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  static List<AnnounceModel> listFromJson(dynamic json) =>
+      List<AnnounceModel>.from(
+        json.map((model) => AnnounceModel.fromJson(model)),
+      );
 
   @override
   String toString() {
-    return 'AnnounceModel(id: $id, user: $user, state: $state, title: $title, date: $date, numberOfOffers: $numberOfOffers, usersProfilePicture: $usersProfilePicture)';
+    return 'AnnounceModel(id: $id, user: $user, state: $state, title: $title, date: $date, numberOfOffers: $numberOfOffers, usersProfilePicture: $usersProfilePicture ,  images: $images)';
   }
 }

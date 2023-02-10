@@ -1,9 +1,17 @@
+import 'package:architect_hub/data/response/api_response.dart';
+import 'package:architect_hub/data/response/status.dart';
+import 'package:architect_hub/model/portfolio_model.dart';
+import 'package:architect_hub/ressources/color_manager.dart';
 import 'package:architect_hub/ressources/components/announce_item.dart';
 import 'package:architect_hub/ressources/components/filter_box.dart';
+import 'package:architect_hub/ressources/components/single_tab.dart';
+import 'package:architect_hub/ressources/styles_manager.dart';
+import 'package:architect_hub/ressources/values_manager.dart';
 import 'package:architect_hub/view/search_view.dart';
 import 'package:architect_hub/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -132,26 +140,12 @@ class _HomeViewState extends State<HomeView> {
           body: ChangeNotifierProvider<HomeViewModel>(
             create: (_) => _homeViewModel,
             child: Consumer<HomeViewModel>(builder: (context, value, _) {
-              if (_homeViewModel.isLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
               return TabBarView(
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
-                  ListView.separated(
-                    separatorBuilder: (context, index) => const SizedBox(
-                      height: 20,
-                    ),
-                    physics: const BouncingScrollPhysics(),
-                    padding: const EdgeInsets.only(top: 20),
-                    itemCount: value.portfolios.length,
-                    itemBuilder: (context, index) => AnnounceItem(
-                      user: value.portfolios[index].user,
-                      images: value.portfolios[index].images,
-                      isFavor: index.isEven,
-                    ),
+                  SingleTab(
+                    status: Status.loading,
+                    portfolios: value.portfolios,
                   ),
                   const Center(
                     child: Text("Tab 2 content"),

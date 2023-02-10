@@ -21,6 +21,11 @@ class FilterViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void onChangedRatingTextfield(String value) {
+    minRating = double.parse(value);
+    notifyListeners();
+  }
+
   void updateSelectedTypes(String type) {
     if (selectedTypes.contains(type)) {
       selectedTypes.remove(type);

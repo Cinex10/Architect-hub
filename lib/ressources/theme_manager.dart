@@ -47,8 +47,8 @@ ThemeData getApplicationTheme() => ThemeData(
 
             ),
       ),
-      sliderTheme: const SliderThemeData(
-        overlayColor: ColorManager.grey,
+      sliderTheme: SliderThemeData(
+        overlayColor: ColorManager.black.withOpacity(0.2),
         activeTrackColor: ColorManager.black,
         activeTickMarkColor: ColorManager.black,
         thumbColor: ColorManager.black,

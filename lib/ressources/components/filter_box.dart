@@ -77,6 +77,8 @@ class FilterBox extends StatelessWidget {
                       width: 100,
                       child: TextField(
                         controller: filterViewModel.ratingTextController,
+                        onChanged: (value) =>
+                            filterViewModel.onChangedRatingTextfield(value),
                         keyboardType: TextInputType.number,
                         decoration: const InputDecoration(
                           helperText: 'أدنى تقييم',

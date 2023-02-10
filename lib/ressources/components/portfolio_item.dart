@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class AnnounceItem extends StatefulWidget {
-  const AnnounceItem({
+class PortfolioItem extends StatefulWidget {
+  const PortfolioItem({
     Key? key,
     required this.isFavor,
     required this.user,
@@ -20,10 +20,10 @@ class AnnounceItem extends StatefulWidget {
   final List<String> images;
 
   @override
-  State<AnnounceItem> createState() => _AnnounceItemState();
+  State<PortfolioItem> createState() => _PortfolioItemState();
 }
 
-class _AnnounceItemState extends State<AnnounceItem> {
+class _PortfolioItemState extends State<PortfolioItem> {
   double scrollPosition = 0.0;
   late bool isFavor;
 
@@ -167,16 +167,10 @@ class _AnnounceItemState extends State<AnnounceItem> {
             ),
             child: Row(
               children: [
-                const CircleAvatar(
+                CircleAvatar(
                   radius: 16,
                   backgroundColor: Colors.redAccent,
-                  child: Text(
-                    'A',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                    ),
-                  ),
+                  backgroundImage: AssetImage(widget.user.profilePicture),
                 ),
                 const Spacer(),
                 Text(

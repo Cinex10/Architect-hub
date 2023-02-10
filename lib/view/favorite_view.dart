@@ -1,4 +1,3 @@
-import 'package:architect_hub/ressources/components/announce_item.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:architect_hub/ressources/values_manager.dart';
 import 'package:flutter/material.dart';

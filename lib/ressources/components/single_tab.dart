@@ -1,6 +1,6 @@
 import 'package:architect_hub/data/response/status.dart';
 import 'package:architect_hub/model/portfolio_model.dart';
-import 'package:architect_hub/ressources/components/announce_item.dart';
+import 'package:architect_hub/ressources/components/portfolio_item.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -23,7 +23,7 @@ class SingleTab extends StatelessWidget {
 
   Widget getItemBuilder(BuildContext context, int index) {
     if (status == Status.completed) {
-      return AnnounceItem(
+      return PortfolioItem(
         user: portfolios![index].user,
         images: portfolios![index].images,
         isFavor: false,

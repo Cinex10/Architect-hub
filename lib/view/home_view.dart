@@ -1,17 +1,9 @@
-import 'package:architect_hub/data/response/api_response.dart';
-import 'package:architect_hub/data/response/status.dart';
-import 'package:architect_hub/model/portfolio_model.dart';
-import 'package:architect_hub/ressources/color_manager.dart';
-import 'package:architect_hub/ressources/components/announce_item.dart';
 import 'package:architect_hub/ressources/components/filter_box.dart';
 import 'package:architect_hub/ressources/components/single_tab.dart';
-import 'package:architect_hub/ressources/styles_manager.dart';
-import 'package:architect_hub/ressources/values_manager.dart';
 import 'package:architect_hub/view/search_view.dart';
 import 'package:architect_hub/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shimmer/shimmer.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -32,7 +24,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: DefaultTabController(
-        length: 9,
+        length: 4,
         child: Scaffold(
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(120),
@@ -128,11 +120,6 @@ class _HomeViewState extends State<HomeView> {
                   Tab(text: "Tab 2"),
                   Tab(text: "Tab 3"),
                   Tab(text: "Tab 4"),
-                  Tab(text: "Tab 5"),
-                  Tab(text: "Tab 6"),
-                  Tab(text: "Tab 7"),
-                  Tab(text: "Tab 8"),
-                  Tab(text: "Tab 9"),
                 ],
               ),
             ),
@@ -144,26 +131,11 @@ class _HomeViewState extends State<HomeView> {
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
                   SingleTab(
-                    status: Status.loading,
+                    status: value.status,
                     portfolios: value.portfolios,
                   ),
                   const Center(
                     child: Text("Tab 2 content"),
-                  ),
-                  const Center(
-                    child: Text("Tab 3 content"),
-                  ),
-                  const Center(
-                    child: Text("Tab 3 content"),
-                  ),
-                  const Center(
-                    child: Text("Tab 3 content"),
-                  ),
-                  const Center(
-                    child: Text("Tab 3 content"),
-                  ),
-                  const Center(
-                    child: Text("Tab 3 content"),
                   ),
                   const Center(
                     child: Text("Tab 3 content"),

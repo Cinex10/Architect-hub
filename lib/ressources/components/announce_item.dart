@@ -1,3 +1,4 @@
+import 'package:architect_hub/model/user_model.dart';
 import 'package:architect_hub/ressources/color_manager.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:architect_hub/ressources/values_manager.dart';
@@ -9,12 +10,14 @@ class AnnounceItem extends StatefulWidget {
   const AnnounceItem({
     Key? key,
     required this.isFavor,
-    required this.itemCount,
+    required this.user,
+    required this.images,
   }) : super(key: key);
 
   final bool isFavor;
 
-  final int itemCount;
+  final UserModel user;
+  final List<String> images;
 
   @override
   State<AnnounceItem> createState() => _AnnounceItemState();
@@ -30,7 +33,7 @@ class _AnnounceItemState extends State<AnnounceItem> {
     isFavor = widget.isFavor;
   }
 
-  bool isEdgeEnd() => scrollPosition == widget.itemCount;
+  bool isEdgeEnd() => scrollPosition == widget.images.length;
   bool isEdgeStart() => scrollPosition == 0;
 
   final PageController _pageController = PageController();
@@ -51,7 +54,7 @@ class _AnnounceItemState extends State<AnnounceItem> {
                   borderRadius: BorderRadius.circular(15),
                   child: PageView.builder(
                     controller: _pageController,
-                    itemCount: widget.itemCount,
+                    itemCount: widget.images.length,
                     itemBuilder: (context, index) => Container(
                       height: 200,
                       decoration: BoxDecoration(
@@ -149,7 +152,7 @@ class _AnnounceItemState extends State<AnnounceItem> {
                         activeDotColor: ColorManager.white,
                       ),
                       controller: _pageController,
-                      count: widget.itemCount,
+                      count: widget.images.length,
                     ),
                   ),
                 ),
@@ -177,7 +180,7 @@ class _AnnounceItemState extends State<AnnounceItem> {
                 ),
                 const Spacer(),
                 Text(
-                  'data',
+                  widget.user.username,
                   style: getBoldStyle(
                     color: ColorManager.black,
                     fontSize: AppSize.s16,

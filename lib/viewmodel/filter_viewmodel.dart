@@ -6,11 +6,10 @@ class FilterViewModel extends ChangeNotifier {
   bool isIncludeMaterials = true;
   List<String> selectedTypes = [];
   List<String> availableTypes = [
-    'Villas',
-    'Apartment',
-    'Office',
-    'Medical',
-    'Shop',
+    'فيلا',
+    'شقة',
+    'مكتب',
+    'متجر',
   ];
   final TextEditingController ratingTextController =
       TextEditingController(text: '2.5');
@@ -46,6 +45,7 @@ class FilterViewModel extends ChangeNotifier {
 
   Future<void> showResult() async {
     final ContentRepository repository = ContentRepository();
-    await repository.getAnnounces();
+    // await repository.getAnnounces();
+    await repository.getPortfolios();
   }
 }

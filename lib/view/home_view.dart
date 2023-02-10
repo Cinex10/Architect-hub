@@ -1,10 +1,24 @@
 import 'package:architect_hub/ressources/components/announce_item.dart';
 import 'package:architect_hub/ressources/components/filter_box.dart';
 import 'package:architect_hub/view/search_view.dart';
+import 'package:architect_hub/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  final HomeViewModel _homeViewModel = HomeViewModel();
+  @override
+  void initState() {
+    super.initState();
+    _homeViewModel.getPortfolios();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +32,10 @@ class HomeView extends StatelessWidget {
               elevation: 4,
               shadowColor: Colors.black38,
               flexibleSpace: Container(
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                padding: const EdgeInsets.only(
-                  right: 20,
+                margin: const EdgeInsetsDirectional.symmetric(
+                    horizontal: 20, vertical: 20),
+                padding: const EdgeInsetsDirectional.only(
+                  start: 20,
                 ),
                 height: 50,
                 width: 600,
@@ -87,7 +101,7 @@ class HomeView extends StatelessWidget {
                           child: Icon(Icons.filter_alt_outlined),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -115,46 +129,57 @@ class HomeView extends StatelessWidget {
               ),
             ),
           ),
-          body: TabBarView(
-            physics: const NeverScrollableScrollPhysics(),
-            children: [
-              ListView.separated(
-                separatorBuilder: (context, index) => const SizedBox(
-                  height: 20,
-                ),
-                physics: const BouncingScrollPhysics(),
-                padding: const EdgeInsets.only(top: 20),
-                itemCount: 10,
-                itemBuilder: (context, index) => AnnounceItem(
-                  isFavor: index.isEven,
-                  itemCount: 10,
-                ),
-              ),
-              const Center(
-                child: Text("Tab 2 content"),
-              ),
-              const Center(
-                child: Text("Tab 3 content"),
-              ),
-              const Center(
-                child: Text("Tab 3 content"),
-              ),
-              const Center(
-                child: Text("Tab 3 content"),
-              ),
-              const Center(
-                child: Text("Tab 3 content"),
-              ),
-              const Center(
-                child: Text("Tab 3 content"),
-              ),
-              const Center(
-                child: Text("Tab 3 content"),
-              ),
-              const Center(
-                child: Text("Tab 3 content"),
-              ),
-            ],
+          body: ChangeNotifierProvider<HomeViewModel>(
+            create: (_) => _homeViewModel,
+            child: Consumer<HomeViewModel>(builder: (context, value, _) {
+              if (_homeViewModel.isLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              return TabBarView(
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  ListView.separated(
+                    separatorBuilder: (context, index) => const SizedBox(
+                      height: 20,
+                    ),
+                    physics: const BouncingScrollPhysics(),
+                    padding: const EdgeInsets.only(top: 20),
+                    itemCount: value.portfolios.length,
+                    itemBuilder: (context, index) => AnnounceItem(
+                      user: value.portfolios[index].user,
+                      images: value.portfolios[index].images,
+                      isFavor: index.isEven,
+                    ),
+                  ),
+                  const Center(
+                    child: Text("Tab 2 content"),
+                  ),
+                  const Center(
+                    child: Text("Tab 3 content"),
+                  ),
+                  const Center(
+                    child: Text("Tab 3 content"),
+                  ),
+                  const Center(
+                    child: Text("Tab 3 content"),
+                  ),
+                  const Center(
+                    child: Text("Tab 3 content"),
+                  ),
+                  const Center(
+                    child: Text("Tab 3 content"),
+                  ),
+                  const Center(
+                    child: Text("Tab 3 content"),
+                  ),
+                  const Center(
+                    child: Text("Tab 3 content"),
+                  ),
+                ],
+              );
+            }),
           ),
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: 2,

@@ -15,10 +15,11 @@ void main() {
       child: MaterialApp(
         theme: getApplicationTheme(),
         debugShowCheckedModeBanner: false,
-        home: const Directionality(
-          textDirection: TextDirection.rtl,
-          child: HomeView(),
-        ),
+        builder: (context, child) {
+          return Directionality(
+              textDirection: TextDirection.rtl, child: child!);
+        },
+        home: const HomeView(),
       ),
     ),
   );

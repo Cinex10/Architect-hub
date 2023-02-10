@@ -28,7 +28,7 @@ class FilterBox extends StatelessWidget {
                 icon: const Icon(Icons.close),
               ),
               Text(
-                'Filter',
+                'فلترة',
                 style: getBoldStyle(
                   color: ColorManager.black,
                   fontSize: AppSize.s16,
@@ -57,7 +57,7 @@ class FilterBox extends StatelessWidget {
                     Align(
                       alignment: AlignmentDirectional.centerStart,
                       child: Text(
-                        'Rating',
+                        'التقييم',
                         style: getBoldStyle(
                           color: ColorManager.black,
                           fontSize: AppSize.s18,
@@ -79,7 +79,7 @@ class FilterBox extends StatelessWidget {
                         controller: filterViewModel.ratingTextController,
                         keyboardType: TextInputType.number,
                         decoration: const InputDecoration(
-                          helperText: 'Min rating',
+                          helperText: 'أدنى تقييم',
                           prefixIcon: Icon(
                             Icons.star,
                           ),
@@ -93,7 +93,7 @@ class FilterBox extends StatelessWidget {
                     Align(
                       alignment: AlignmentDirectional.centerStart,
                       child: Text(
-                        'Type',
+                        'النوع',
                         style: getBoldStyle(
                           color: ColorManager.black,
                           fontSize: AppSize.s18,
@@ -169,7 +169,7 @@ class FilterBox extends StatelessWidget {
                     Align(
                       alignment: AlignmentDirectional.centerStart,
                       child: Text(
-                        'Price',
+                        'السعر',
                         style: getBoldStyle(
                           color: ColorManager.black,
                           fontSize: AppSize.s18,
@@ -223,7 +223,7 @@ class FilterBox extends StatelessWidget {
                             // activeColor: Colors.black,
                             title: const FittedBox(
                               child: Text(
-                                'Including materials',
+                                'باحتساب المواد',
                               ),
                             ),
                             value: filterViewModel.isIncludeMaterials,
@@ -243,7 +243,7 @@ class FilterBox extends StatelessWidget {
                     Align(
                       alignment: AlignmentDirectional.centerStart,
                       child: Text(
-                        'Location',
+                        'الموقع',
                         style: getBoldStyle(
                           color: ColorManager.black,
                           fontSize: AppSize.s18,
@@ -267,7 +267,7 @@ class FilterBox extends StatelessWidget {
                 TextButton(
                   onPressed: () => filterViewModel.clearAllFilters(),
                   child: Text(
-                    'Clear all',
+                    'مسح الكل',
                     style: getBoldStyle(
                       fontSize: 16,
                       color: ColorManager.black,
@@ -277,7 +277,7 @@ class FilterBox extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () => filterViewModel.showResult(),
                   child: const Text(
-                    'Show',
+                    'عرض',
                   ),
                 )
               ],

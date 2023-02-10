@@ -27,18 +27,21 @@ class FavoriteView extends StatelessWidget {
             ),
           ),
         ),
-        body: ListView.separated(
-          separatorBuilder: (context, index) => const SizedBox(
-            height: 20,
-          ),
-          physics: const BouncingScrollPhysics(),
-          padding: const EdgeInsets.only(top: 20),
-          itemCount: 10,
-          itemBuilder: (context, index) => const AnnounceItem(
-            isFavor: true,
-            itemCount: 10,
-          ),
-        ),
+        body: Builder(builder: (context) {
+          return Container();
+          // return ListView.separated(
+          //   separatorBuilder: (context, index) => const SizedBox(
+          //     height: 20,
+          //   ),
+          //   physics: const BouncingScrollPhysics(),
+          //   padding: const EdgeInsets.only(top: 20),
+          //   itemCount: 10,
+          //   itemBuilder: (context, index) => const AnnounceItem(
+          //     isFavor: true,
+          //     itemCount: 10,
+          //   ),
+          // );
+        }),
         bottomNavigationBar: BottomNavigationBar(
           selectedLabelStyle: const TextStyle(
             color: Colors.black,

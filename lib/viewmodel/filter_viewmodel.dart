@@ -1,52 +1,61 @@
+import 'package:architect_hub/model/filter_model.dart';
 import 'package:architect_hub/repository/remote/content_repository/content_repository.dart';
+import 'package:architect_hub/ressources/constant.dart';
 import 'package:flutter/material.dart';
 
 class FilterViewModel extends ChangeNotifier {
-  double minRating = 2.5;
-  bool isIncludeMaterials = true;
-  List<String> selectedTypes = [];
-  List<String> availableTypes = [
-    'فيلا',
-    'شقة',
-    'مكتب',
-    'متجر',
-  ];
+  FilterModel filterModel = FilterModel(
+    minRating: 2.5,
+    price: 256.4,
+    isIncludeMaterials: true,
+    location: 'default location',
+    availableTypes: AppConstants.availableTypes,
+  );
+
   final TextEditingController ratingTextController =
       TextEditingController(text: '2.5');
   final TextEditingController priceTextController = TextEditingController();
 
   void updateRating(double newRating) {
-    minRating = newRating;
-    ratingTextController.text = minRating.toStringAsPrecision(2);
+    filterModel.minRating = newRating;
+    ratingTextController.text = filterModel.minRating.toStringAsPrecision(2);
     notifyListeners();
   }
 
   void onChangedRatingTextfield(String value) {
-    minRating = double.parse(value);
+    final newRating = double.parse(value);
+    filterModel.minRating = newRating;
     notifyListeners();
   }
 
   void updateSelectedTypes(String type) {
-    if (selectedTypes.contains(type)) {
-      selectedTypes.remove(type);
-    } else {
-      selectedTypes.add(type);
+    for (TypeFilterModel element in filterModel.types) {
+      if (element.name == type) {
+        element.isSelected = !element.isSelected;
+        break;
+      }
     }
     notifyListeners();
   }
 
   void updateIncludeMaterials(bool newValue) {
-    isIncludeMaterials = newValue;
+    filterModel.isIncludeMaterials = newValue;
     notifyListeners();
   }
 
   void clearAllFilters() {
-    selectedTypes.clear();
+    for (TypeFilterModel element in filterModel.types) {
+      element.isSelected = false;
+    }
     priceTextController.text = '';
-    minRating = 2.5;
+    filterModel.minRating = 2.5;
     ratingTextController.text = '2.5';
     notifyListeners();
   }
+
+  bool isTypeSelected(int index) => filterModel.types[index].isSelected;
+
+  List<TypeFilterModel> get types => filterModel.types;
 
   Future<void> showResult() async {
     final ContentRepository repository = ContentRepository();

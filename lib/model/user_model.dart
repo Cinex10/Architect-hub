@@ -1,7 +1,16 @@
+import 'package:hive/hive.dart';
+
+part 'user_model.g.dart';
+
+@HiveType(typeId: 1)
 class UserModel {
+  @HiveField(0)
   int id;
+  @HiveField(1)
   String username;
+  @HiveField(2)
   String profilePicture;
+  @HiveField(3)
   double rating;
   UserModel({
     required this.id,

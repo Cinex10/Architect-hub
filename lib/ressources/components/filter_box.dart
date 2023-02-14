@@ -43,7 +43,9 @@ class FilterBox extends StatelessWidget {
               ),
             ],
           ),
-          const Divider(),
+          const Divider(
+            height: 2,
+          ),
           Expanded(
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
@@ -52,215 +54,221 @@ class FilterBox extends StatelessWidget {
                   vertical: 20,
                   horizontal: 25,
                 ),
-                child: Column(
-                  children: [
-                    Align(
-                      alignment: AlignmentDirectional.centerStart,
-                      child: Text(
-                        'التقييم',
-                        style: getBoldStyle(
-                          color: ColorManager.black,
-                          fontSize: AppSize.s18,
+                child: Consumer<FilterViewModel>(
+                    builder: (context, filterViewModel, _) {
+                  return Column(
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional.centerStart,
+                        child: Text(
+                          'التقييم',
+                          style: getBoldStyle(
+                            color: ColorManager.black,
+                            fontSize: AppSize.s18,
+                          ),
                         ),
                       ),
-                    ),
-                    Slider(
-                      min: 0,
-                      max: 5.0,
-                      divisions: 50,
-                      value: filterViewModel.minRating,
-                      label: filterViewModel.minRating.toStringAsPrecision(2),
-                      onChanged: (value) => filterViewModel.updateRating(value),
-                    ),
-                    SizedBox(
-                      height: 80,
-                      width: 100,
-                      child: TextField(
-                        controller: filterViewModel.ratingTextController,
+                      Slider(
+                        min: 0,
+                        max: 5.0,
+                        divisions: 50,
+                        value: filterViewModel.filterModel.minRating,
+                        label: filterViewModel.filterModel.minRating
+                            .toStringAsPrecision(2),
                         onChanged: (value) =>
-                            filterViewModel.onChangedRatingTextfield(value),
-                        keyboardType: TextInputType.number,
-                        decoration: const InputDecoration(
-                          helperText: 'أدنى تقييم',
-                          prefixIcon: Icon(
-                            Icons.star,
-                          ),
-                        ),
+                            filterViewModel.updateRating(value),
                       ),
-                    ),
-                    const Divider(),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional.centerStart,
-                      child: Text(
-                        'النوع',
-                        style: getBoldStyle(
-                          color: ColorManager.black,
-                          fontSize: AppSize.s18,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Wrap(
-                      alignment: WrapAlignment.center,
-                      spacing: 10,
-                      children: List.generate(
-                        filterViewModel.availableTypes.length,
-                        (index) => GestureDetector(
-                          onTap: () => filterViewModel.updateSelectedTypes(
-                              filterViewModel.availableTypes[index]),
-                          child: Chip(
-                            backgroundColor: (filterViewModel.selectedTypes
-                                    .contains(
-                                        filterViewModel.availableTypes[index]))
-                                ? Colors.black
-                                : null,
-                            elevation: (filterViewModel.selectedTypes.contains(
-                                    filterViewModel.availableTypes[index]))
-                                ? 9
-                                : null,
-                            label: Text(filterViewModel.availableTypes[index]),
-                            labelStyle: (filterViewModel.selectedTypes.contains(
-                                    filterViewModel.availableTypes[index]))
-                                ? getMediumStyle(
-                                    color: Colors.white,
-                                    fontSize: AppSize.s14,
-                                  )
-                                : null,
-                          ),
-                        ),
-                      ),
-                      // children: [
-                      //   Chip(
-                      //     // selected chip style
-                      //     backgroundColor: Colors.black,
-                      //     shadowColor: Colors.black,
-                      //     elevation: 9,
-                      //     label: const Text('Villas'),
-                      //     // selected chip label style
-                      //     labelStyle: getMediumStyle(
-                      //       color: Colors.white,
-                      //       fontSize: AppSize.s14,
-                      //     ),
-                      //   ),
-                      //   const Chip(
-                      //     label: Text('Apartment'),
-                      //   ),
-                      //   const Chip(
-                      //     label: Text('Office'),
-                      //   ),
-                      //   const Chip(
-                      //     label: Text('Medical'),
-                      //   ),
-                      //   const Chip(
-                      //     label: Text('Shop'),
-                      //   ),
-                      // ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Divider(),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional.centerStart,
-                      child: Text(
-                        'السعر',
-                        style: getBoldStyle(
-                          color: ColorManager.black,
-                          fontSize: AppSize.s18,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex: 2,
-                          child: TextField(
-                            cursorColor: Colors.black,
-                            controller: filterViewModel.priceTextController,
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.zero,
-                              hintText: '256.4',
-                              prefixIcon: const Icon(
-                                Icons.attach_money_rounded,
-                                color: Colors.black,
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Colors.black,
-                                ),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Colors.black,
-                                  width: 2,
-                                ),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              border: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Colors.black,
-                                ),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
+                      SizedBox(
+                        height: 80,
+                        width: 100,
+                        child: TextField(
+                          controller: filterViewModel.ratingTextController,
+                          onChanged: (value) =>
+                              filterViewModel.onChangedRatingTextfield(value),
+                          keyboardType: TextInputType.number,
+                          decoration: const InputDecoration(
+                            helperText: 'أدنى تقييم',
+                            prefixIcon: Icon(
+                              Icons.star,
                             ),
                           ),
                         ),
-                        Expanded(
-                          flex: 4,
-                          child: SwitchListTile(
-                            // activeColor: Colors.black,
-                            title: const FittedBox(
-                              child: Text(
-                                'باحتساب المواد',
-                              ),
-                            ),
-                            value: filterViewModel.isIncludeMaterials,
-                            onChanged: (value) =>
-                                filterViewModel.updateIncludeMaterials(value),
+                      ),
+                      const Divider(),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional.centerStart,
+                        child: Text(
+                          'النوع',
+                          style: getBoldStyle(
+                            color: ColorManager.black,
+                            fontSize: AppSize.s18,
                           ),
                         ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    const Divider(),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional.centerStart,
-                      child: Text(
-                        'الموقع',
-                        style: getBoldStyle(
-                          color: ColorManager.black,
-                          fontSize: AppSize.s18,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Wrap(
+                        alignment: WrapAlignment.center,
+                        spacing: 10,
+                        children: List.generate(
+                          filterViewModel.types.length,
+                          (index) => GestureDetector(
+                            onTap: () => filterViewModel.updateSelectedTypes(
+                                filterViewModel.types[index].name),
+                            child: Chip(
+                              backgroundColor:
+                                  filterViewModel.isTypeSelected(index)
+                                      ? Colors.black
+                                      : null,
+                              elevation: filterViewModel.isTypeSelected(index)
+                                  ? 9
+                                  : null,
+                              label: Text(filterViewModel
+                                  .filterModel.types[index].name),
+                              labelStyle: filterViewModel.isTypeSelected(index)
+                                  ? getMediumStyle(
+                                      color: Colors.white,
+                                      fontSize: AppSize.s14,
+                                    )
+                                  : null,
+                            ),
+                          ),
+                        ),
+                        // children: [
+                        //   Chip(
+                        //     // selected chip style
+                        //     backgroundColor: Colors.black,
+                        //     shadowColor: Colors.black,
+                        //     elevation: 9,
+                        //     label: const Text('Villas'),
+                        //     // selected chip label style
+                        //     labelStyle: getMediumStyle(
+                        //       color: Colors.white,
+                        //       fontSize: AppSize.s14,
+                        //     ),
+                        //   ),
+                        //   const Chip(
+                        //     label: Text('Apartment'),
+                        //   ),
+                        //   const Chip(
+                        //     label: Text('Office'),
+                        //   ),
+                        //   const Chip(
+                        //     label: Text('Medical'),
+                        //   ),
+                        //   const Chip(
+                        //     label: Text('Shop'),
+                        //   ),
+                        // ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Divider(),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional.centerStart,
+                        child: Text(
+                          'السعر',
+                          style: getBoldStyle(
+                            color: ColorManager.black,
+                            fontSize: AppSize.s18,
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            flex: 2,
+                            child: TextField(
+                              cursorColor: Colors.black,
+                              controller: filterViewModel.priceTextController,
+                              keyboardType: TextInputType.number,
+                              decoration: InputDecoration(
+                                contentPadding: EdgeInsets.zero,
+                                hintText: '256.4',
+                                prefixIcon: const Icon(
+                                  Icons.attach_money_rounded,
+                                  color: Colors.black,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                    color: Colors.black,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                    color: Colors.black,
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                border: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                    color: Colors.black,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 4,
+                            child: SwitchListTile(
+                              // activeColor: Colors.black,
+                              title: const FittedBox(
+                                child: Text(
+                                  'باحتساب المواد',
+                                ),
+                              ),
+                              value: filterViewModel
+                                  .filterModel.isIncludeMaterials,
+                              onChanged: (value) =>
+                                  filterViewModel.updateIncludeMaterials(value),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      const Divider(),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional.centerStart,
+                        child: Text(
+                          'الموقع',
+                          style: getBoldStyle(
+                            color: ColorManager.black,
+                            fontSize: AppSize.s18,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  );
+                }),
               ),
             ),
           ),
-          const Divider(),
+          const Divider(
+            height: 2,
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Row(

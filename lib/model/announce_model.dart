@@ -42,7 +42,6 @@ class AnnounceModel {
       // Ex: map['data'] = "1974-03-20 00:00:00.000"
       date: DateTime.parse(map['date'] as String),
       numberOfOffers: map['numberOfOffers'] as int,
-      // images: List<String>.from(json["images"].map((x) => x)),
       usersProfilePicture:
           List<String>.from(map['usersProfilePicture'].map((x) => x)),
       images: List<String>.from(map['images'].map((x) => x)),

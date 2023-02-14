@@ -1,5 +1,7 @@
+import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
 import 'package:architect_hub/ressources/components/filter_box.dart';
 import 'package:architect_hub/ressources/components/single_tab.dart';
+import 'package:architect_hub/ressources/constant.dart';
 import 'package:architect_hub/view/search_view.dart';
 import 'package:architect_hub/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +26,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: DefaultTabController(
-        length: 4,
+        length: AppConstants.availableTypes.length,
         child: Scaffold(
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(120),
@@ -106,22 +108,21 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
               backgroundColor: Colors.white,
-              bottom: const TabBar(
-                isScrollable: true,
-                labelColor: Colors.black,
-                labelStyle: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
-                ),
-                padding: EdgeInsets.only(top: 30),
-                indicatorColor: Colors.black,
-                tabs: [
-                  Tab(text: "Tab 1"),
-                  Tab(text: "Tab 2"),
-                  Tab(text: "Tab 3"),
-                  Tab(text: "Tab 4"),
-                ],
-              ),
+              bottom: TabBar(
+                  isScrollable: true,
+                  labelColor: Colors.black,
+                  labelStyle: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                  padding: const EdgeInsets.only(top: 30),
+                  indicatorColor: Colors.black,
+                  tabs: List.generate(
+                    AppConstants.availableTypes.length,
+                    (index) =>
+                        Tab(text: AppConstants.availableTypes[index].name),
+                  )),
             ),
           ),
           body: ChangeNotifierProvider<HomeViewModel>(
@@ -131,9 +132,10 @@ class _HomeViewState extends State<HomeView> {
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
                   SingleTab(
-                    status: value.status,
-                    portfolios: value.portfolios,
-                  ),
+                      status: value.status,
+                      portfolios: value.portfolios,
+                      onRefresh: () =>
+                          value.getPortfolios(withShimmerEffect: true)),
                   const Center(
                     child: Text("Tab 2 content"),
                   ),
@@ -147,22 +149,8 @@ class _HomeViewState extends State<HomeView> {
               );
             }),
           ),
-          bottomNavigationBar: BottomNavigationBar(
+          bottomNavigationBar: const BottomNavBar(
             currentIndex: 2,
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person_outline),
-                label: 'Log in',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.favorite),
-                label: 'Wishlist',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.search),
-                label: 'Explore',
-              ),
-            ],
           ),
         ),
       ),

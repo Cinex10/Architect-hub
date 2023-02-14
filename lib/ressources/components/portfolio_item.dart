@@ -1,23 +1,21 @@
-import 'package:architect_hub/model/user_model.dart';
+import 'package:architect_hub/model/portfolio_model.dart';
 import 'package:architect_hub/ressources/color_manager.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:architect_hub/ressources/values_manager.dart';
+import 'package:architect_hub/viewmodel/favorite_viewmodel.dart';
+import 'package:architect_hub/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class PortfolioItem extends StatefulWidget {
   const PortfolioItem({
     Key? key,
-    required this.isFavor,
-    required this.user,
-    required this.images,
+    required this.portifolioModel,
   }) : super(key: key);
 
-  final bool isFavor;
-
-  final UserModel user;
-  final List<String> images;
+  final PortifolioModel portifolioModel;
 
   @override
   State<PortfolioItem> createState() => _PortfolioItemState();
@@ -25,15 +23,8 @@ class PortfolioItem extends StatefulWidget {
 
 class _PortfolioItemState extends State<PortfolioItem> {
   double scrollPosition = 0.0;
-  late bool isFavor;
 
-  @override
-  void initState() {
-    super.initState();
-    isFavor = widget.isFavor;
-  }
-
-  bool isEdgeEnd() => scrollPosition == widget.images.length;
+  bool isEdgeEnd() => scrollPosition == widget.portifolioModel.images.length;
   bool isEdgeStart() => scrollPosition == 0;
 
   final PageController _pageController = PageController();
@@ -54,7 +45,7 @@ class _PortfolioItemState extends State<PortfolioItem> {
                   borderRadius: BorderRadius.circular(15),
                   child: PageView.builder(
                     controller: _pageController,
-                    itemCount: widget.images.length,
+                    itemCount: widget.portifolioModel.images.length,
                     itemBuilder: (context, index) => Container(
                       height: 200,
                       decoration: BoxDecoration(
@@ -72,6 +63,8 @@ class _PortfolioItemState extends State<PortfolioItem> {
                   top: AppPadding.p12,
                   left: AppPadding.p12,
                   child: LikeButton(
+                    isLiked: Provider.of<FavoriteViewModel>(context)
+                        .isPortfolioLiked(widget.portifolioModel.id),
                     size: 25,
                     circleColor: const CircleColor(
                       start: ColorManager.white,
@@ -81,6 +74,24 @@ class _PortfolioItemState extends State<PortfolioItem> {
                       dotPrimaryColor: ColorManager.white,
                       dotSecondaryColor: ColorManager.red,
                     ),
+                    onTap: (isLiked) async {
+                      for (PortifolioModel element
+                          in Provider.of<HomeViewModel>(context, listen: false)
+                              .portfolios) {
+                        if (element == widget.portifolioModel) {
+                          element.isFavor = !isLiked;
+                          break;
+                        }
+                      }
+                      if (!isLiked) {
+                        Provider.of<FavoriteViewModel>(context, listen: false)
+                            .addToFavorite(widget.portifolioModel);
+                      } else {
+                        Provider.of<FavoriteViewModel>(context, listen: false)
+                            .removeFromFavorite(widget.portifolioModel.id);
+                      }
+                      return !isLiked;
+                    },
                     likeBuilder: (isLiked) {
                       return Icon(
                         isLiked ? Icons.favorite : Icons.favorite_border,
@@ -152,7 +163,7 @@ class _PortfolioItemState extends State<PortfolioItem> {
                         activeDotColor: ColorManager.white,
                       ),
                       controller: _pageController,
-                      count: widget.images.length,
+                      count: widget.portifolioModel.images.length,
                     ),
                   ),
                 ),
@@ -170,11 +181,12 @@ class _PortfolioItemState extends State<PortfolioItem> {
                 CircleAvatar(
                   radius: 16,
                   backgroundColor: Colors.redAccent,
-                  backgroundImage: AssetImage(widget.user.profilePicture),
+                  backgroundImage:
+                      AssetImage(widget.portifolioModel.user.profilePicture),
                 ),
                 const Spacer(),
                 Text(
-                  widget.user.username,
+                  widget.portifolioModel.user.username,
                   style: getBoldStyle(
                     color: ColorManager.black,
                     fontSize: AppSize.s16,

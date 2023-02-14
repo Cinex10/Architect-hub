@@ -17,7 +17,7 @@ class ContentRepository extends BaseContentRepository {
 
   @override
   Future<List<PortifolioModel>> getPortfolios() async {
-    return await Future.delayed(const Duration(seconds: 3)).then((value) async {
+    return await Future.delayed(const Duration(seconds: 1)).then((value) async {
       final String response =
           await rootBundle.loadString('assets/dummy_data/portfolios.json');
       final data = jsonDecode(response);

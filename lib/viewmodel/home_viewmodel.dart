@@ -1,7 +1,10 @@
-import 'package:architect_hub/data/response/status.dart';
+import 'package:architect_hub/data/network/response/status.dart';
 import 'package:architect_hub/model/portfolio_model.dart';
 import 'package:architect_hub/repository/remote/content_repository/content_repository.dart';
+import 'package:architect_hub/viewmodel/favorite_viewmodel.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeViewModel extends ChangeNotifier {
   Status status = Status.completed;
@@ -14,9 +17,11 @@ class HomeViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> getPortfolios() async {
-    changeStatus(Status.loading);
+  Future<void> getPortfolios({bool withShimmerEffect = true}) async {
+    if (withShimmerEffect) changeStatus(Status.loading);
     portfolios = await _contentRepository.getPortfolios();
-    changeStatus(Status.completed);
+    if (withShimmerEffect) changeStatus(Status.completed);
   }
+
+ 
 }

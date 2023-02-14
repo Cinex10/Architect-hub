@@ -1,7 +1,9 @@
 import 'package:architect_hub/view/favorite_view.dart';
 import 'package:architect_hub/view/home_view.dart';
 import 'package:architect_hub/view/inbox_view.dart';
+import 'package:architect_hub/view/login_view.dart';
 import 'package:architect_hub/view/search_view.dart';
+import 'package:architect_hub/view/setting_view.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
@@ -19,18 +21,17 @@ class RouteGenerator {
       case Routes.homeRoute:
 // Get.to('/home')
 // Get.to(homeRoute)
-
         return MaterialPageRoute(
           builder: (_) => const HomeView(),
         );
-      // case Routes.loginRoute:
-      //   return MaterialPageRoute(
-      //     builder: (_) => const LoginView(),
-      //   );
-      // case Routes.settingRoute:
-      //   return MaterialPageRoute(
-      //     builder: (_) => const SettingView(),
-      //   );
+      case Routes.loginRoute:
+        return MaterialPageRoute(
+          builder: (_) => const LoginView(),
+        );
+      case Routes.settingRoute:
+        return MaterialPageRoute(
+          builder: (_) => const SettingView(),
+        );
       case Routes.favoritsRoute:
         return MaterialPageRoute(
           builder: (_) => const FavoriteView(),

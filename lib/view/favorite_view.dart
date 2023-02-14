@@ -1,9 +1,28 @@
+import 'package:architect_hub/data/network/response/status.dart';
+import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
+import 'package:architect_hub/ressources/components/portfolio_item.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:architect_hub/ressources/values_manager.dart';
+import 'package:architect_hub/viewmodel/favorite_viewmodel.dart';
+import 'package:architect_hub/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class FavoriteView extends StatelessWidget {
+class FavoriteView extends StatefulWidget {
   const FavoriteView({super.key});
+
+  @override
+  State<FavoriteView> createState() => _FavoriteViewState();
+}
+
+class _FavoriteViewState extends State<FavoriteView> {
+  final FavoriteViewModel _favoriteViewModel = FavoriteViewModel();
+
+  @override
+  void initState() {
+    super.initState();
+    _favoriteViewModel.getAllFavorites();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,41 +45,34 @@ class FavoriteView extends StatelessWidget {
             ),
           ),
         ),
-        body: Builder(builder: (context) {
-          return Container();
-          // return ListView.separated(
-          //   separatorBuilder: (context, index) => const SizedBox(
-          //     height: 20,
-          //   ),
-          //   physics: const BouncingScrollPhysics(),
-          //   padding: const EdgeInsets.only(top: 20),
-          //   itemCount: 10,
-          //   itemBuilder: (context, index) => const AnnounceItem(
-          //     isFavor: true,
-          //     itemCount: 10,
-          //   ),
-          // );
-        }),
-        bottomNavigationBar: BottomNavigationBar(
-          selectedLabelStyle: const TextStyle(
-            color: Colors.black,
+        body: ChangeNotifierProvider<FavoriteViewModel>(
+          create: (_) => _favoriteViewModel,
+          child: Consumer<FavoriteViewModel>(
+            builder: (context, value, _) {
+              if (value.favorites.isEmpty) {
+                return const Center(
+                  child: Text('لا توجد عناصر مفضلة'),
+                );
+              }
+              return ListView.separated(
+                separatorBuilder: (context, index) => const SizedBox(
+                  height: 20,
+                ),
+                physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.only(top: 20),
+                itemCount: value.favorites.length,
+                itemBuilder: (context, index) {
+                  return PortfolioItem(
+                    portifolioModel:
+                        value.favorites[value.favorites.keys.toList()[index]]!,
+                  );
+                },
+              );
+            },
           ),
-          selectedItemColor: Colors.black,
+        ),
+        bottomNavigationBar: const BottomNavBar(
           currentIndex: 1,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline),
-              label: 'Log in',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.favorite),
-              label: 'Wishlist',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: 'Explore',
-            ),
-          ],
         ),
       ),
     );

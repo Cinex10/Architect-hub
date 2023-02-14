@@ -1,4 +1,4 @@
-import 'package:architect_hub/data/response/status.dart';
+import 'package:architect_hub/data/network/response/status.dart';
 import 'package:architect_hub/model/portfolio_model.dart';
 import 'package:architect_hub/ressources/components/portfolio_item.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +9,9 @@ class SingleTab extends StatelessWidget {
     super.key,
     this.portfolios,
     required this.status,
+    required this.onRefresh,
   });
-
+  final Future<void> Function() onRefresh;
   final List<PortifolioModel>? portfolios;
   final Status status;
 
@@ -24,9 +25,7 @@ class SingleTab extends StatelessWidget {
   Widget getItemBuilder(BuildContext context, int index) {
     if (status == Status.completed) {
       return PortfolioItem(
-        user: portfolios![index].user,
-        images: portfolios![index].images,
-        isFavor: false,
+        portifolioModel: portfolios![index],
       );
     }
     return Shimmer.fromColors(
@@ -96,14 +95,17 @@ class SingleTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      separatorBuilder: (context, index) => const SizedBox(
-        height: 20,
+    return RefreshIndicator(
+      onRefresh: onRefresh,
+      child: ListView.separated(
+        separatorBuilder: (context, index) => const SizedBox(
+          height: 20,
+        ),
+        physics: getScrollPhysics(),
+        padding: const EdgeInsets.only(top: 20),
+        itemCount: getItemCount(),
+        itemBuilder: (context, index) => getItemBuilder(context, index),
       ),
-      physics: getScrollPhysics(),
-      padding: const EdgeInsets.only(top: 20),
-      itemCount: getItemCount(),
-      itemBuilder: (context, index) => getItemBuilder(context, index),
     );
   }
 }

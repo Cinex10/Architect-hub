@@ -59,7 +59,7 @@ ThemeData getApplicationTheme() => ThemeData(
         cursorColor: ColorManager.black,
       ),
       inputDecorationTheme: InputDecorationTheme(
-        contentPadding: EdgeInsets.zero,
+        contentPadding: const EdgeInsets.all(5),
         border: OutlineInputBorder(
           borderSide: const BorderSide(
             color: ColorManager.black,

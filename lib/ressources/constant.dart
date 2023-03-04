@@ -7,4 +7,20 @@ class AppConstants {
     const TypeModel(name: 'مكتب'),
     const TypeModel(name: 'متجر'),
   ];
+
+  static List<String> requestTypes = [
+    'الكل',
+    'قيد المعاينة',
+    'قيد التنفيذ',
+    'مكتمل',
+    'مسودة',
+  ];
+
+  static List<String> unitType = [
+    'وحدة 1',
+    'وحدة 2',
+    'وحدة 3',
+    'وحدة 4',
+    'وحدة 5',
+  ];
 }

@@ -1,3 +1,4 @@
+import 'package:architect_hub/ressources/components/inbox_item.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:architect_hub/ressources/values_manager.dart';
 import 'package:flutter/material.dart';
@@ -42,13 +43,13 @@ class InboxView extends StatelessWidget {
                 tabs: [
                   Tab(
                     child: TextWithNotificationCount(
-                      text: 'Messages',
+                      text: 'الرسائل',
                       count: 2,
                     ),
                   ),
                   Tab(
                     child: TextWithNotificationCount(
-                      text: 'Notifications',
+                      text: 'الإشعارات',
                     ),
                   ),
                 ],
@@ -123,8 +124,8 @@ class MessagesList extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10),
       itemBuilder: (context, index) {
         return const InboxItem(
-          title: 'Salih',
-          middleText: 'Helle?',
+          title: 'صالح',
+          middleText: 'تص تجريبي',
           thirdLineText: '2022 Jan 19',
         );
       },
@@ -155,68 +156,6 @@ class NotificationsList extends StatelessWidget {
         height: 1.5,
       ),
       itemCount: 6,
-    );
-  }
-}
-
-class InboxItem extends StatelessWidget {
-  const InboxItem({
-    super.key,
-    required this.thirdLineText,
-    required this.title,
-    this.middleText,
-  });
-
-  final String thirdLineText;
-  final String title;
-  final String? middleText;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 80,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const CircleAvatar(
-            radius: 25,
-            backgroundColor: Colors.blue,
-            backgroundImage: AssetImage('assets/images/1.jpg'),
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
-                ),
-                if (middleText != null)
-                  Text(
-                    middleText!,
-                    style: const TextStyle(
-                      fontSize: 15,
-                    ),
-                  ),
-                Text(
-                  thirdLineText,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: Colors.black26,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

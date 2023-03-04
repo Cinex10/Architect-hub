@@ -1,10 +1,11 @@
 import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
 import 'package:architect_hub/ressources/components/filter_box.dart';
-import 'package:architect_hub/ressources/components/single_tab.dart';
+import 'package:architect_hub/ressources/components/portfolio_single_tab.dart';
 import 'package:architect_hub/ressources/constant.dart';
 import 'package:architect_hub/view/search_view.dart';
 import 'package:architect_hub/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class HomeView extends StatefulWidget {
@@ -34,13 +35,11 @@ class _HomeViewState extends State<HomeView> {
               elevation: 4,
               shadowColor: Colors.black38,
               flexibleSpace: Container(
-                margin: const EdgeInsetsDirectional.symmetric(
-                    horizontal: 20, vertical: 20),
+                margin: EdgeInsetsDirectional.symmetric(
+                    vertical: 20, horizontal: (1.sw > 550) ? 0.27.sw : 20.w),
                 padding: const EdgeInsetsDirectional.only(
                   start: 20,
                 ),
-                height: 50,
-                width: 600,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   border: Border.all(
@@ -131,7 +130,7 @@ class _HomeViewState extends State<HomeView> {
               return TabBarView(
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
-                  SingleTab(
+                  PortfolioSingleTab(
                       status: value.status,
                       portfolios: value.portfolios,
                       onRefresh: () =>

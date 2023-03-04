@@ -2,10 +2,11 @@ import 'package:architect_hub/data/network/response/status.dart';
 import 'package:architect_hub/model/portfolio_model.dart';
 import 'package:architect_hub/ressources/components/portfolio_item.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_grid_list/responsive_grid_list.dart';
 import 'package:shimmer/shimmer.dart';
 
-class SingleTab extends StatelessWidget {
-  const SingleTab({
+class PortfolioSingleTab extends StatelessWidget {
+  const PortfolioSingleTab({
     super.key,
     this.portfolios,
     required this.status,
@@ -97,15 +98,31 @@ class SingleTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: onRefresh,
-      child: ListView.separated(
-        separatorBuilder: (context, index) => const SizedBox(
-          height: 20,
+      child: ResponsiveGridList(
+        horizontalGridSpacing: 0,
+        verticalGridSpacing: 20,
+        horizontalGridMargin: 0,
+        verticalGridMargin: 20,
+        minItemWidth: 250,
+        minItemsPerRow: 1,
+        maxItemsPerRow: 6,
+        listViewBuilderOptions: ListViewBuilderOptions(
+          physics: getScrollPhysics(),
         ),
-        physics: getScrollPhysics(),
-        padding: const EdgeInsets.only(top: 20),
-        itemCount: getItemCount(),
-        itemBuilder: (context, index) => getItemBuilder(context, index),
+        children: List.generate(
+          getItemCount(),
+          (index) => getItemBuilder(context, index),
+        ),
       ),
+      // child: ListView.separated(
+      //   separatorBuilder: (context, index) => const SizedBox(
+      //     height: 20,
+      //   ),
+      //   physics: getScrollPhysics(),
+      //   padding: const EdgeInsets.only(top: 20),
+      //   itemCount: getItemCount(),
+      //   itemBuilder: (context, index) => getItemBuilder(context, index),
+      // ),
     );
   }
 }

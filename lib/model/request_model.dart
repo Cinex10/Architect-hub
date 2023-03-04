@@ -1,6 +1,6 @@
 import 'package:architect_hub/model/user_model.dart';
 
-class AnnounceModel {
+class RequestModel {
   int id;
   UserModel user;
   String state;
@@ -9,7 +9,7 @@ class AnnounceModel {
   int numberOfOffers;
   List<String> images;
   List<String> usersProfilePicture;
-  AnnounceModel({
+  RequestModel({
     required this.id,
     required this.user,
     required this.state,
@@ -33,8 +33,8 @@ class AnnounceModel {
     };
   }
 
-  factory AnnounceModel.fromJson(Map<String, dynamic> map) {
-    return AnnounceModel(
+  factory RequestModel.fromJson(Map<String, dynamic> map) {
+    return RequestModel(
       id: map['id'] as int,
       user: UserModel.fromJson(map['user']),
       state: map['state'] as String,
@@ -48,13 +48,13 @@ class AnnounceModel {
     );
   }
 
-  static List<AnnounceModel> listFromJson(dynamic json) =>
-      List<AnnounceModel>.from(
-        json.map((model) => AnnounceModel.fromJson(model)),
+  static List<RequestModel> listFromJson(dynamic json) =>
+      List<RequestModel>.from(
+        json.map((model) => RequestModel.fromJson(model)),
       );
 
   @override
   String toString() {
-    return 'AnnounceModel(id: $id, user: $user, state: $state, title: $title, date: $date, numberOfOffers: $numberOfOffers, usersProfilePicture: $usersProfilePicture ,  images: $images)';
+    return 'RequestModel(id: $id, user: $user, state: $state, title: $title, date: $date, numberOfOffers: $numberOfOffers, usersProfilePicture: $usersProfilePicture ,  images: $images)';
   }
 }

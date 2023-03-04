@@ -2,6 +2,9 @@ import 'package:architect_hub/view/favorite_view.dart';
 import 'package:architect_hub/view/home_view.dart';
 import 'package:architect_hub/view/inbox_view.dart';
 import 'package:architect_hub/view/login_view.dart';
+import 'package:architect_hub/view/offers_view.dart';
+import 'package:architect_hub/view/profile_view.dart';
+import 'package:architect_hub/view/request_view.dart';
 import 'package:architect_hub/view/search_view.dart';
 import 'package:architect_hub/view/setting_view.dart';
 import 'package:flutter/material.dart';
@@ -13,24 +16,33 @@ class Routes {
   static const String favoritsRoute = '/favorits';
   static const String inboxRoute = '/inbox';
   static const String searchRoute = '/search';
+  static const String requestRoute = '/request';
+  static const String profileRoute = '/profile';
+  static const String offersRoute = '/offers';
 }
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.homeRoute:
-// Get.to('/home')
-// Get.to(homeRoute)
         return MaterialPageRoute(
           builder: (_) => const HomeView(),
         );
       case Routes.loginRoute:
         return MaterialPageRoute(
-          builder: (_) => const LoginView(),
+          builder: (_) => LoginView(),
+        );
+      case Routes.profileRoute:
+        return MaterialPageRoute(
+          builder: (_) => const ProfileView(),
         );
       case Routes.settingRoute:
         return MaterialPageRoute(
           builder: (_) => const SettingView(),
+        );
+      case Routes.requestRoute:
+        return MaterialPageRoute(
+          builder: (_) => const RequestView(),
         );
       case Routes.favoritsRoute:
         return MaterialPageRoute(
@@ -43,6 +55,15 @@ class RouteGenerator {
       case Routes.searchRoute:
         return MaterialPageRoute(
           builder: (_) => const SearchView(),
+        );
+      case Routes.offersRoute:
+        return MaterialPageRoute(
+          builder: (_) {
+            final int arg = settings.arguments as int;
+            return OffersView(
+              idRequest: arg,
+            );
+          },
         );
       default:
         return unDefinedRoute();

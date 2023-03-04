@@ -16,7 +16,7 @@ class FavoriteViewModel extends ChangeNotifier {
 
   void removeFromFavorite(int id) {
     _localUserRepository.removeFromFavorite(id);
-    getAllFavorites();
+    favorites.remove(id);
   }
 
   bool isPortfolioLiked(int id) {

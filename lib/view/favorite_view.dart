@@ -1,5 +1,7 @@
 import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
 import 'package:architect_hub/ressources/components/portfolio_item.dart';
+import 'package:architect_hub/ressources/constant.dart';
+import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:architect_hub/ressources/values_manager.dart';
 import 'package:architect_hub/viewmodel/favorite_viewmodel.dart';
@@ -35,7 +37,7 @@ class _FavoriteViewState extends State<FavoriteView> {
             title: Padding(
               padding: const EdgeInsets.only(top: AppPadding.p20),
               child: Text(
-                'Favorits',
+                'المفضلة',
                 style: getBoldStyle(
                   color: Colors.black,
                   fontSize: AppSize.s25,
@@ -74,8 +76,8 @@ class _FavoriteViewState extends State<FavoriteView> {
             },
           ),
         ),
-        bottomNavigationBar: const BottomNavBar(
-          currentIndex: 1,
+        bottomNavigationBar: BottomNavBar(
+          currentRoute: Routes.favoritsRoute,
         ),
       ),
     );

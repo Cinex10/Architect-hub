@@ -1,7 +1,9 @@
+import 'package:architect_hub/view/chat_view.dart';
 import 'package:architect_hub/view/favorite_view.dart';
 import 'package:architect_hub/view/home_view.dart';
 import 'package:architect_hub/view/inbox_view.dart';
 import 'package:architect_hub/view/login_view.dart';
+import 'package:architect_hub/view/new_request_view.dart';
 import 'package:architect_hub/view/offers_view.dart';
 import 'package:architect_hub/view/profile_view.dart';
 import 'package:architect_hub/view/request_view.dart';
@@ -19,6 +21,8 @@ class Routes {
   static const String requestRoute = '/request';
   static const String profileRoute = '/profile';
   static const String offersRoute = '/offers';
+  static const String chatRoute = '/chat';
+  static const String newRequestRoute = '/newRequest';
 }
 
 class RouteGenerator {
@@ -38,7 +42,7 @@ class RouteGenerator {
         );
       case Routes.settingRoute:
         return MaterialPageRoute(
-          builder: (_) => const SettingView(),
+          builder: (_) => SettingView(),
         );
       case Routes.requestRoute:
         return MaterialPageRoute(
@@ -60,9 +64,22 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) {
             final int arg = settings.arguments as int;
+
             return OffersView(
               idRequest: arg,
             );
+          },
+        );
+      case Routes.chatRoute:
+        return MaterialPageRoute(
+          builder: (_) {
+            return const ChatView();
+          },
+        );
+      case Routes.newRequestRoute:
+        return MaterialPageRoute(
+          builder: (_) {
+            return const NewRequestView();
           },
         );
       default:

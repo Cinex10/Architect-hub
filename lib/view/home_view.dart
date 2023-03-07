@@ -2,6 +2,7 @@ import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
 import 'package:architect_hub/ressources/components/filter_box.dart';
 import 'package:architect_hub/ressources/components/portfolio_single_tab.dart';
 import 'package:architect_hub/ressources/constant.dart';
+import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/view/search_view.dart';
 import 'package:architect_hub/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -148,8 +149,8 @@ class _HomeViewState extends State<HomeView> {
               );
             }),
           ),
-          bottomNavigationBar: const BottomNavBar(
-            currentIndex: 2,
+          bottomNavigationBar: BottomNavBar(
+            currentRoute: Routes.homeRoute,
           ),
         ),
       ),

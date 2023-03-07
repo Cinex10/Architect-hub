@@ -1,7 +1,10 @@
 import 'package:architect_hub/ressources/color_manager.dart';
 import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
+import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
+import 'package:architect_hub/viewmodel/user_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SettingView extends StatelessWidget {
   const SettingView({super.key});
@@ -37,15 +40,19 @@ class SettingView extends StatelessWidget {
               indent: 20,
             ),
             const Spacer(),
-            ListTile(
-              leading: const Icon(Icons.swap_horizontal_circle_sharp),
-              title: const Text('إلى حساب مقدم الخدمة'),
-              trailing: const Icon(
-                Icons.arrow_back_ios_new_rounded,
-                size: 17,
-              ),
-              onTap: () {},
-            ),
+            Consumer<UserViewModel>(builder: (context, viewmodel, _) {
+              return ListTile(
+                leading: const Icon(Icons.swap_horizontal_circle_sharp),
+                title: (viewmodel.isServiceProvider)
+                    ? const Text('إلى حساب عميل')
+                    : const Text('إلى حساب مقدم الخدمة'),
+                trailing: const Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  size: 17,
+                ),
+                onTap: () => viewmodel.switchUserMode(),
+              );
+            }),
             const Spacer(
               flex: 2,
             ),
@@ -113,14 +120,17 @@ class SettingView extends StatelessWidget {
                 Icons.arrow_back_ios_new_rounded,
                 size: 17,
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, Routes.loginRoute);
+                Provider.of<UserViewModel>(context, listen: false).logout();
+              },
             ),
             const Spacer(),
           ],
         ),
       ),
       bottomNavigationBar: const BottomNavBar(
-        currentIndex: 2,
+        currentRoute: Routes.settingRoute,
       ),
     );
   }

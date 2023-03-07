@@ -1,5 +1,6 @@
 import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
 import 'package:architect_hub/ressources/components/inbox_item.dart';
+import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,7 +35,8 @@ class ChatView extends StatelessWidget {
                         ),
                       ),
                       ElevatedButton.icon(
-                        onPressed: () {},
+                        onPressed: () => Navigator.pushNamed(
+                            context, Routes.newRequestRoute),
                         label: const Text('إنشاء طلب مباشر'),
                         icon: const Icon(Icons.call),
                       ),
@@ -56,7 +58,7 @@ class ChatView extends StatelessWidget {
                   physics: const BouncingScrollPhysics(),
                   itemCount: 10,
                   itemBuilder: (context, index) => InboxItem(
-                    title: 'صالح',
+                    title: (index % 5).isEven ? 'صالح' : 'أحمد معتز',
                     middleText: 'تص تجريبي',
                     thirdLineText: '2022 Jan 19',
                     isDirectionReversed: (index % 5).isEven,
@@ -67,8 +69,8 @@ class ChatView extends StatelessWidget {
             ],
           ),
         ),
-        bottomNavigationBar: const BottomNavBar(
-          currentIndex: 2,
+        bottomNavigationBar: BottomNavBar(
+          currentRoute: Routes.chatRoute,
         ),
       ),
     );

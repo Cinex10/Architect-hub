@@ -1,49 +1,49 @@
-import 'package:architect_hub/ressources/routes_manager.dart';
+import 'package:architect_hub/model/bottom_bar_item.dart';
+import 'package:architect_hub/ressources/constant.dart';
+import 'package:architect_hub/viewmodel/user_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({
     super.key,
-    required this.currentIndex,
+    required this.currentRoute,
   });
 
-  final int currentIndex;
+  final String currentRoute;
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: currentIndex,
-      onTap: (value) {
-        if (value != currentIndex) {
-          switch (value) {
-            case 0:
-              Navigator.pushNamed(context, Routes.loginRoute);
-              break;
-            case 1:
-              Navigator.pushNamed(context, Routes.favoritsRoute);
-              break;
-            case 2:
-              Navigator.pushNamed(context, Routes.homeRoute);
-              break;
-            default:
-              break;
-          }
-        }
+    return Consumer<UserViewModel>(
+      builder: (contextn, viewmodel, _) {
+        List<BottomBarItem> bottomBarItems = (!viewmodel.isLogged)
+            ? AppConstants.unLoggedUserBottomBarItems
+            : (viewmodel.isServiceProvider)
+                ? AppConstants.serviceProviderBottomBarItems
+                : AppConstants.simpleUserBottomBarItems;
+        int currentIndex = bottomBarItems
+            .indexWhere((element) => element.route == currentRoute);
+        return BottomNavigationBar(
+          currentIndex: (currentIndex < 0) ? 0 : currentIndex,
+          onTap: (value) {
+            if (value != currentIndex) {
+              Navigator.pushNamed(context, bottomBarItems[value].route);
+            }
+          },
+          unselectedItemColor: Colors.black45,
+          showUnselectedLabels: true,
+          unselectedLabelStyle: const TextStyle(
+            color: Colors.black45,
+          ),
+          items: List.generate(
+            bottomBarItems.length,
+            (index) => BottomNavigationBarItem(
+              icon: bottomBarItems[index].icon,
+              label: bottomBarItems[index].label,
+            ),
+          ),
+        );
       },
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person_outline),
-          label: 'تسجيل الدخول',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.favorite),
-          label: 'المفضلة',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.search),
-          label: 'بحث',
-        ),
-      ],
     );
   }
 }

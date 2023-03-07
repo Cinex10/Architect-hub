@@ -2,6 +2,7 @@ import 'package:architect_hub/data/network/response/status.dart';
 import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
 import 'package:architect_hub/ressources/components/request_single_tab.dart';
 import 'package:architect_hub/ressources/constant.dart';
+import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:architect_hub/viewmodel/request_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -78,7 +79,7 @@ class _RequestViewState extends State<RequestView> {
             create: (_) => _requestsViewModel,
             child: Consumer<RequestsViewModel>(builder: (context, value, _) {
               return TabBarView(
-                physics: const NeverScrollableScrollPhysics(),  
+                physics: const NeverScrollableScrollPhysics(),
                 children: [
                   RequestSingleTab(
                     status: Status.completed,
@@ -94,8 +95,8 @@ class _RequestViewState extends State<RequestView> {
             }),
           ),
           backgroundColor: Colors.grey[200],
-          bottomNavigationBar: const BottomNavBar(
-            currentIndex: 2,
+          bottomNavigationBar: BottomNavBar(
+            currentRoute: Routes.requestRoute,
           ),
         ),
       ),

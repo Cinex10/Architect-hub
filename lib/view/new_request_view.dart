@@ -1,5 +1,6 @@
 import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
 import 'package:architect_hub/ressources/constant.dart';
+import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:architect_hub/ressources/validation_manager.dart';
 import 'package:architect_hub/view/login_view.dart';
@@ -35,7 +36,6 @@ class _NewRequestViewState extends State<NewRequestView> {
         body: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: 20.w,
-            vertical: 10.w,
           ),
           child: Form(
             key: _newRequestViewModel.formKey,
@@ -47,10 +47,15 @@ class _NewRequestViewState extends State<NewRequestView> {
                     physics: const BouncingScrollPhysics(),
                     child: Column(
                       children: [
+                        SizedBox(
+                          height: 10.h,
+                        ),
                         WidgetWithFixedLabel(
                           label: 'تفاصيل الطلب',
                           child: TextFormField(
                               maxLines: 7,
+                              decoration: const InputDecoration(
+                                  contentPadding: EdgeInsets.all(5)),
                               validator: ValidationManager
                                   .requestDescriptionValidator),
                         ),
@@ -197,6 +202,9 @@ class _NewRequestViewState extends State<NewRequestView> {
                             ),
                           ],
                         ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
                       ],
                     ),
                   );
@@ -205,8 +213,8 @@ class _NewRequestViewState extends State<NewRequestView> {
             ),
           ),
         ),
-        bottomNavigationBar: const BottomNavBar(
-          currentIndex: 2,
+        bottomNavigationBar: BottomNavBar(
+          currentRoute: Routes.newRequestRoute,
         ),
       ),
     );

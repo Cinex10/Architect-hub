@@ -1,4 +1,5 @@
 import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
+import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:architect_hub/viewmodel/request_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +52,8 @@ class _ProfileViewState extends State<ProfileView> {
                           ),
                         ),
                         ElevatedButton.icon(
-                          onPressed: () {},
+                          onPressed: () =>
+                              Navigator.pushNamed(context, Routes.chatRoute),
                           label: const Text('تواصل معي'),
                           icon: const Icon(Icons.call),
                         ),
@@ -214,8 +216,8 @@ class _ProfileViewState extends State<ProfileView> {
               ),
             ],
           ),
-          bottomNavigationBar: const BottomNavBar(
-            currentIndex: 2,
+          bottomNavigationBar: BottomNavBar(
+            currentRoute: Routes.profileRoute,
           ),
         ),
       ),

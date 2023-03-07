@@ -1,13 +1,14 @@
+import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
+import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
-import 'package:architect_hub/viewmodel/login_viewmodel.dart';
+import 'package:architect_hub/viewmodel/user_viewmodel.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class LoginView extends StatelessWidget {
-  LoginView({super.key});
-  final LoginViewModel _loginViewModel = LoginViewModel();
+  const LoginView({super.key});
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -63,65 +64,63 @@ class LoginView extends StatelessWidget {
               const Spacer(
                 flex: 2,
               ),
-              ChangeNotifierProvider<LoginViewModel>(
-                create: (_) => _loginViewModel,
-                child:
-                    Consumer<LoginViewModel>(builder: (context, viewModel, _) {
-                  return WidgetWithFixedLabel(
-                    child: TextField(
-                      decoration: InputDecoration(
-                          hintText: '000 000 000 000',
-                          suffixIcon: SizedBox(
-                            width: 70.w,
-                            height: 50,
-                            child: Center(
-                              child: GestureDetector(
-                                onTap: () async {
-                                  showCountryPicker(
-                                    context: context,
-                                    showPhoneCode: true,
-                                    countryListTheme: CountryListThemeData(
-                                      flagSize: 25,
-                                      backgroundColor: Colors.white,
-                                      textStyle: const TextStyle(
-                                          fontSize: 16, color: Colors.blueGrey),
-                                      bottomSheetHeight:
-                                          500, // Optional. Country list modal height
-                                      //Optional. Sets the border radius for the bottomsheet.
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(20.0),
-                                        topRight: Radius.circular(20.0),
-                                      ),
-                                      //Optional. Styles the search field.
-                                      inputDecoration: InputDecoration(
-                                        labelText: 'اكتب اسم الدولة',
-                                        hintText: 'ابحث',
-                                        prefixIcon: const Icon(Icons.search),
-                                        border: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: const Color(0xFF8C98A8)
-                                                .withOpacity(0.2),
-                                          ),
+              Consumer<UserViewModel>(builder: (context, viewModel, _) {
+                return WidgetWithFixedLabel(
+                  label: 'رقم الجوال',
+                  child: TextField(
+                    decoration: InputDecoration(
+                        hintText: '000 000 000 000',
+                        suffixIcon: SizedBox(
+                          width: 70.w,
+                          height: 50,
+                          child: Center(
+                            child: GestureDetector(
+                              onTap: () async {
+                                showCountryPicker(
+                                  context: context,
+                                  showPhoneCode: true,
+                                  countryListTheme: CountryListThemeData(
+                                    flagSize: 25,
+                                    backgroundColor: Colors.white,
+                                    textStyle: const TextStyle(
+                                        fontSize: 16, color: Colors.blueGrey),
+                                    bottomSheetHeight:
+                                        500, // Optional. Country list modal height
+                                    //Optional. Sets the border radius for the bottomsheet.
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(20.0),
+                                      topRight: Radius.circular(20.0),
+                                    ),
+                                    //Optional. Styles the search field.
+                                    inputDecoration: InputDecoration(
+                                      labelText: 'اكتب اسم الدولة',
+                                      hintText: 'ابحث',
+                                      prefixIcon: const Icon(Icons.search),
+                                      border: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: const Color(0xFF8C98A8)
+                                              .withOpacity(0.2),
                                         ),
                                       ),
                                     ),
-                                    onSelect: _loginViewModel.changeCountry,
-                                  );
-                                },
-                                child: Text(
-                                  '${viewModel.country.flagEmoji} +${viewModel.country.phoneCode}',
-                                  style: getRegularStyle(
-                                      color: Colors.black, fontSize: 18),
-                                ),
+                                  ),
+                                  onSelect: Provider.of<UserViewModel>(context,
+                                          listen: false)
+                                      .changeCountry,
+                                );
+                              },
+                              child: Text(
+                                '${viewModel.country.flagEmoji} +${viewModel.country.phoneCode}',
+                                style: getRegularStyle(
+                                    color: Colors.black, fontSize: 18),
                               ),
                             ),
                           ),
-                          helperText: 'سيتم إرسال كود التحقق على رقم جوالك'),
-                    ),
-                    label: 'رقم الجوال',
-                  );
-                }),
-              ),
+                        ),
+                        helperText: 'سيتم إرسال كود التحقق على رقم جوالك'),
+                  ),
+                );
+              }),
               const Spacer(
                 flex: 2,
               ),
@@ -144,9 +143,12 @@ class LoginView extends StatelessWidget {
               ),
               Center(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Provider.of<UserViewModel>(context, listen: false).login();
+                    Navigator.pushNamed(context, Routes.homeRoute);
+                  },
                   child: const Text(
-                    'حفظ التغييرات',
+                    'تسجيل الدخول',
                   ),
                 ),
               ),
@@ -157,9 +159,9 @@ class LoginView extends StatelessWidget {
           ),
         ),
         backgroundColor: Colors.white,
-        // bottomNavigationBar: const BottomNavBar(
-        //   currentIndex: 0,
-        // ),
+        bottomNavigationBar: const BottomNavBar(
+          currentRoute: Routes.loginRoute,
+        ),
       ),
     );
   }

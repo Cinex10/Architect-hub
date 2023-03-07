@@ -1,4 +1,6 @@
+import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
 import 'package:architect_hub/ressources/components/inbox_item.dart';
+import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:architect_hub/ressources/values_manager.dart';
 import 'package:flutter/material.dart';
@@ -66,6 +68,9 @@ class InboxView extends StatelessWidget {
               ],
             ),
           ),
+          bottomNavigationBar: BottomNavBar(
+            currentRoute: Routes.inboxRoute,
+          ),
         ),
       ),
     );
@@ -123,10 +128,11 @@ class MessagesList extends StatelessWidget {
     return ListView.separated(
       padding: const EdgeInsets.only(top: 10),
       itemBuilder: (context, index) {
-        return const InboxItem(
+        return InboxItem(
           title: 'صالح',
           middleText: 'تص تجريبي',
           thirdLineText: '2022 Jan 19',
+          onTap: () => Navigator.pushNamed(context, Routes.chatRoute),
         );
       },
       separatorBuilder: (context, index) => const Divider(
@@ -146,9 +152,10 @@ class NotificationsList extends StatelessWidget {
     return ListView.separated(
       padding: const EdgeInsets.only(top: 10),
       itemBuilder: (context, index) {
-        return const InboxItem(
+        return InboxItem(
           title: 'Dont forget to rate your experience with Mamdoh',
           thirdLineText: '2022 Jan 19',
+          onTap: () {},
         );
       },
       separatorBuilder: (context, index) => const Divider(

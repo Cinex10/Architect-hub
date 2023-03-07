@@ -3,15 +3,20 @@ import 'package:architect_hub/model/user_model.dart';
 import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/theme_manager.dart';
 import 'package:architect_hub/view/chat_view.dart';
+import 'package:architect_hub/view/home_view.dart';
+import 'package:architect_hub/view/inbox_view.dart';
 import 'package:architect_hub/view/login_view.dart';
 import 'package:architect_hub/view/new_request_view.dart';
 import 'package:architect_hub/view/offers_view.dart';
+import 'package:architect_hub/view/profile_view.dart';
+import 'package:architect_hub/view/request_view.dart';
 import 'package:architect_hub/view/search_view.dart';
+import 'package:architect_hub/view/setting_view.dart';
 import 'package:architect_hub/viewmodel/favorite_viewmodel.dart';
 import 'package:architect_hub/viewmodel/filter_viewmodel.dart';
 import 'package:architect_hub/viewmodel/home_viewmodel.dart';
-import 'package:architect_hub/viewmodel/login_viewmodel.dart';
 import 'package:architect_hub/viewmodel/new_request_viewmodel.dart';
+import 'package:architect_hub/viewmodel/user_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -36,8 +41,8 @@ void main() async {
         ChangeNotifierProvider<FavoriteViewModel>(
           create: (_) => FavoriteViewModel(),
         ),
-        ChangeNotifierProvider<LoginViewModel>(
-          create: (_) => LoginViewModel(),
+        ChangeNotifierProvider<UserViewModel>(
+          create: (_) => UserViewModel(),
         ),
       ],
       child: ScreenUtilInit(
@@ -55,7 +60,7 @@ void main() async {
             home: child,
           );
         },
-        child: NewRequestView(),
+        child: const RequestView(),
       ),
     ),
   );

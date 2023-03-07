@@ -226,24 +226,24 @@ class FilterBox extends StatelessWidget {
                           const Spacer(
                             flex: 3,
                           ),
-                          Expanded(
-                            // flex: 4,
-                            child: Align(
-                              alignment: AlignmentDirectional.centerStart,
-                              child: SwitchListTile(
-                                // activeColor: Colors.black,
-                                title: const FittedBox(
-                                  child: Text(
-                                    'باحتساب المواد',
-                                  ),
-                                ),
-                                value: filterViewModel
-                                    .filterModel.isIncludeMaterials,
-                                onChanged: (value) => filterViewModel
-                                    .updateIncludeMaterials(value),
-                              ),
-                            ),
-                          ),
+                          // Expanded(
+                          //   // flex: 4,
+                          //   child: Align(
+                          //     alignment: AlignmentDirectional.centerStart,
+                          //     child: SwitchListTile(
+                          //       // activeColor: Colors.black,
+                          //       title: const FittedBox(
+                          //         child: Text(
+                          //           'باحتساب المواد',
+                          //         ),
+                          //       ),
+                          //       value: filterViewModel
+                          //           .filterModel.isIncludeMaterials,
+                          //       onChanged: (value) => filterViewModel
+                          //           .updateIncludeMaterials(value),
+                          //     ),
+                          //   ),
+                          // ),
                         ],
                       ),
                       const SizedBox(

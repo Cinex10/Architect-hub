@@ -33,21 +33,20 @@ class _RequestViewState extends State<RequestView> {
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(120),
             child: AppBar(
+              automaticallyImplyLeading: false,
               elevation: 0,
               // title: const Text('طلباتي'),
               flexibleSpace: Container(
                 margin: EdgeInsetsDirectional.symmetric(
                     vertical: 20, horizontal: (1.sw > 550) ? 0.27.sw : 20.w),
-                padding: const EdgeInsetsDirectional.only(
-                  start: 20,
-                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       'طلباتي',
                       style: getBoldStyle(
-                        fontSize: 20,
+                        color: Colors.black,
+                        fontSize: 25,
                       ),
                     ),
                     ElevatedButton.icon(
@@ -95,7 +94,7 @@ class _RequestViewState extends State<RequestView> {
             }),
           ),
           backgroundColor: Colors.grey[200],
-          bottomNavigationBar: BottomNavBar(
+          bottomNavigationBar: const BottomNavBar(
             currentRoute: Routes.requestRoute,
           ),
         ),

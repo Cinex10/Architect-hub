@@ -1,4 +1,5 @@
 import 'package:architect_hub/ressources/color_manager.dart';
+import 'package:architect_hub/ressources/constant.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:architect_hub/ressources/values_manager.dart';
 import 'package:architect_hub/viewmodel/filter_viewmodel.dart';
@@ -189,7 +190,7 @@ class FilterBox extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Expanded(
-                            flex: 2,
+                            flex: 3,
                             child: TextField(
                               cursorColor: Colors.black,
                               controller: filterViewModel.priceTextController,
@@ -224,26 +225,23 @@ class FilterBox extends StatelessWidget {
                             ),
                           ),
                           const Spacer(
-                            flex: 3,
+                              // flex: 3,
+                              ),
+                          Expanded(
+                            flex: 4,
+                            child: SwitchListTile(
+                              // activeColor: Colors.black,
+                              title: const FittedBox(
+                                child: Text(
+                                  'باحتساب المواد',
+                                ),
+                              ),
+                              value: filterViewModel
+                                  .filterModel.isIncludeMaterials,
+                              onChanged: (value) =>
+                                  filterViewModel.updateIncludeMaterials(value),
+                            ),
                           ),
-                          // Expanded(
-                          //   // flex: 4,
-                          //   child: Align(
-                          //     alignment: AlignmentDirectional.centerStart,
-                          //     child: SwitchListTile(
-                          //       // activeColor: Colors.black,
-                          //       title: const FittedBox(
-                          //         child: Text(
-                          //           'باحتساب المواد',
-                          //         ),
-                          //       ),
-                          //       value: filterViewModel
-                          //           .filterModel.isIncludeMaterials,
-                          //       onChanged: (value) => filterViewModel
-                          //           .updateIncludeMaterials(value),
-                          //     ),
-                          //   ),
-                          // ),
                         ],
                       ),
                       const SizedBox(
@@ -265,6 +263,24 @@ class FilterBox extends StatelessWidget {
                       ),
                       const SizedBox(
                         height: 10,
+                      ),
+                      DropdownButtonFormField(
+                        // validator: ValidationManager.locationValidator,
+                        decoration: const InputDecoration(
+                          suffixIcon: Icon(Icons.place),
+                          suffixIconColor: Colors.black38,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                        hint: const Text('اختر الموقع'),
+                        items: List.generate(
+                          AppConstants.locations.length,
+                          (index) => DropdownMenuItem(
+                            value: AppConstants.locations[index],
+                            child: Text(AppConstants.locations[index]),
+                          ),
+                        ),
+                        value: filterViewModel.location,
+                        onChanged: filterViewModel.changeLocation,
                       ),
                     ],
                   );
@@ -291,7 +307,7 @@ class FilterBox extends StatelessWidget {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () => filterViewModel.showResult(),
+                  onPressed: () => filterViewModel.showResult(context),
                   child: const Text(
                     'عرض',
                   ),

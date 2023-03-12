@@ -18,14 +18,15 @@ class InboxView extends StatelessWidget {
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(120),
             child: AppBar(
+              automaticallyImplyLeading: false,
               elevation: 1,
               title: Padding(
                 padding: const EdgeInsets.only(top: AppPadding.p20),
                 child: Text(
-                  'Inbox',
+                  'الوارد',
                   style: getBoldStyle(
                     color: Colors.black,
-                    fontSize: AppSize.s25,
+                    fontSize: 25,
                   ),
                 ),
               ),
@@ -52,6 +53,7 @@ class InboxView extends StatelessWidget {
                   Tab(
                     child: TextWithNotificationCount(
                       text: 'الإشعارات',
+                      count: 1,
                     ),
                   ),
                 ],
@@ -68,7 +70,7 @@ class InboxView extends StatelessWidget {
               ],
             ),
           ),
-          bottomNavigationBar: BottomNavBar(
+          bottomNavigationBar: const BottomNavBar(
             currentRoute: Routes.inboxRoute,
           ),
         ),
@@ -132,6 +134,12 @@ class MessagesList extends StatelessWidget {
           title: 'صالح',
           middleText: 'تص تجريبي',
           thirdLineText: '2022 Jan 19',
+          titleStyle: (index < 2)
+              ? getBoldStyle(fontSize: 16)
+              : getRegularStyle(fontSize: 16, color: Colors.black54),
+          middleTextStyle: (index < 2)
+              ? getBoldStyle(fontSize: 13)
+              : getRegularStyle(fontSize: 13, color: Colors.black54),
           onTap: () => Navigator.pushNamed(context, Routes.chatRoute),
         );
       },
@@ -153,8 +161,11 @@ class NotificationsList extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10),
       itemBuilder: (context, index) {
         return InboxItem(
-          title: 'Dont forget to rate your experience with Mamdoh',
+          title: 'لا تنسى تقييم تجربتك مع صالح',
           thirdLineText: '2022 Jan 19',
+          titleStyle: (index < 1)
+              ? getBoldStyle(fontSize: 16)
+              : getRegularStyle(fontSize: 16, color: Colors.black54),
           onTap: () {},
         );
       },

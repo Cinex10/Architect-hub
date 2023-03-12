@@ -16,6 +16,13 @@ class FilterViewModel extends ChangeNotifier {
       TextEditingController(text: '2.5');
   final TextEditingController priceTextController = TextEditingController();
 
+  String? location;
+
+  void changeLocation(String? value) {
+    location = value;
+    notifyListeners();
+  }
+
   void updateRating(double newRating) {
     filterModel.minRating = newRating;
     ratingTextController.text = filterModel.minRating.toStringAsPrecision(2);
@@ -50,6 +57,7 @@ class FilterViewModel extends ChangeNotifier {
     priceTextController.text = '';
     filterModel.minRating = 2.5;
     ratingTextController.text = '2.5';
+    location = null;
     notifyListeners();
   }
 
@@ -57,9 +65,9 @@ class FilterViewModel extends ChangeNotifier {
 
   List<TypeFilterModel> get types => filterModel.types;
 
-  Future<void> showResult() async {
-    final ContentRepository repository = ContentRepository();
-    // await repository.getAnnounces();
-    await repository.getPortfolios();
+  Future<void> showResult(BuildContext context) async {
+    // final ContentRepository repository = ContentRepository();
+    Navigator.pop(context);
+    // await repository.getPortfolios();
   }
 }

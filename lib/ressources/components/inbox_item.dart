@@ -2,20 +2,23 @@ import 'package:flutter/material.dart';
 
 class InboxItem extends StatelessWidget {
   const InboxItem({
-    super.key,
+    Key? key,
     required this.thirdLineText,
     required this.title,
     this.middleText,
     this.onTap,
     this.isDirectionReversed = false,
-  });
+    this.middleTextStyle = const TextStyle(fontSize: 13),
+    this.titleStyle = const TextStyle(fontSize: 16),
+  }) : super(key: key);
 
   final String thirdLineText;
   final String title;
   final String? middleText;
   final void Function()? onTap;
-
   final bool isDirectionReversed;
+  final TextStyle titleStyle;
+  final TextStyle middleTextStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -44,17 +47,12 @@ class InboxItem extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                      ),
+                      style: titleStyle,
                     ),
                     if (middleText != null)
                       Text(
                         middleText!,
-                        style: const TextStyle(
-                          fontSize: 15,
-                        ),
+                        style: middleTextStyle,
                       ),
                     Text(
                       thirdLineText,

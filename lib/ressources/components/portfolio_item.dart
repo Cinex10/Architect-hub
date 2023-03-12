@@ -1,5 +1,6 @@
 import 'package:architect_hub/model/portfolio_model.dart';
 import 'package:architect_hub/ressources/color_manager.dart';
+import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:architect_hub/ressources/values_manager.dart';
 import 'package:architect_hub/viewmodel/favorite_viewmodel.dart';
@@ -167,7 +168,6 @@ class _PortfolioItemState extends State<PortfolioItem> {
                     ),
                   ),
                 ),
-          
               ],
             ),
           ),
@@ -177,37 +177,40 @@ class _PortfolioItemState extends State<PortfolioItem> {
               left: 10,
               top: 3,
             ),
-            child: Row(
-              children: [
-                CircleAvatar(
-                  radius: 16,
-                  backgroundColor: Colors.redAccent,
-                  backgroundImage:
-                      AssetImage(widget.portifolioModel.user.profilePicture),
-                ),
-                const Spacer(),
-                Text(
-                  widget.portifolioModel.user.username,
-                  style: getBoldStyle(
-                    color: ColorManager.black,
-                    fontSize: AppSize.s16,
+            child: GestureDetector(
+              onTap: () => Navigator.pushNamed(context, Routes.profileRoute),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 16,
+                    backgroundColor: Colors.redAccent,
+                    backgroundImage:
+                        AssetImage(widget.portifolioModel.user.profilePicture),
                   ),
-                ),
-                const Spacer(
-                  flex: 10,
-                ),
-                const Icon(
-                  Icons.star,
-                  size: 18,
-                  color: Colors.black,
-                ),
-                Text(
-                  ' 2.5',
-                  style: getRegularStyle(
-                    color: ColorManager.black,
+                  const Spacer(),
+                  Text(
+                    widget.portifolioModel.user.username,
+                    style: getBoldStyle(
+                      color: ColorManager.black,
+                      fontSize: AppSize.s16,
+                    ),
                   ),
-                ),
-              ],
+                  const Spacer(
+                    flex: 10,
+                  ),
+                  const Icon(
+                    Icons.star,
+                    size: 18,
+                    color: Colors.black,
+                  ),
+                  Text(
+                    ' 2.5',
+                    style: getRegularStyle(
+                      color: ColorManager.black,
+                    ),
+                  ),
+                ],
+              ),
             ),
           )
         ],

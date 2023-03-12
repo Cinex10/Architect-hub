@@ -55,56 +55,52 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ],
                 ),
-                child: Row(
-                  children: [
-                    const Icon(Icons.search),
-                    const Spacer(),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const SearchView(),
-                          ),
-                        );
-                      },
-                      child: const Text(
+                child: GestureDetector(
+                  onTap: () => Navigator.pushNamed(
+                    context,
+                    Routes.searchRoute,
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.search),
+                      const Spacer(),
+                      const Text(
                         'إسم المصمم',
                         style: TextStyle(
                           color: Colors.black54,
                           fontSize: 15,
                         ),
                       ),
-                    ),
-                    const Spacer(
-                      flex: 10,
-                    ),
-                    Material(
-                      color: Colors.white,
-                      shape: const CircleBorder(),
-                      child: InkWell(
-                        radius: 40,
-                        borderRadius: BorderRadius.circular(20),
-                        onTap: () => showModalBottomSheet(
-                          context: context,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.vertical(
-                              top: Radius.circular(10),
+                      const Spacer(
+                        flex: 10,
+                      ),
+                      Material(
+                        color: Colors.white,
+                        shape: const CircleBorder(),
+                        child: InkWell(
+                          radius: 40,
+                          borderRadius: BorderRadius.circular(20),
+                          onTap: () => showModalBottomSheet(
+                            context: context,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(10),
+                              ),
+                            ),
+                            backgroundColor: Colors.white,
+                            builder: (context) => Padding(
+                              padding: MediaQuery.of(context).viewInsets,
+                              child: const FilterBox(),
                             ),
                           ),
-                          backgroundColor: Colors.white,
-                          builder: (context) => Padding(
-                            padding: MediaQuery.of(context).viewInsets,
-                            child: const FilterBox(),
+                          child: const Padding(
+                            padding: EdgeInsets.all(12.0),
+                            child: Icon(Icons.filter_alt_outlined),
                           ),
                         ),
-                        child: const Padding(
-                          padding: EdgeInsets.all(12.0),
-                          child: Icon(Icons.filter_alt_outlined),
-                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               backgroundColor: Colors.white,

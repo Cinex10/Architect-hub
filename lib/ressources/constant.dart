@@ -27,6 +27,14 @@ class AppConstants {
     'وحدة 5',
   ];
 
+  static List<String> locations = [
+    'موقع 1',
+    'موقع 2',
+    'موقع 3',
+    'موقع 4',
+    'موقع 5',
+  ];
+
   static List<BottomBarItem> unLoggedUserBottomBarItems = [
     BottomBarItem(
       route: Routes.loginRoute,
@@ -62,8 +70,8 @@ class AppConstants {
     ),
     BottomBarItem(
       route: Routes.requestRoute,
-      icon: const Icon(Icons.work),
-      label: 'أعمالي',
+      icon: const Icon(Icons.edit),
+      label: 'طلباتي',
     ),
     BottomBarItem(
       route: Routes.favoritsRoute,
@@ -89,8 +97,8 @@ class AppConstants {
     ),
     BottomBarItem(
       route: Routes.requestRoute,
-      icon: const Icon(Icons.edit),
-      label: 'طلباتي',
+      icon: const Icon(Icons.work),
+      label: 'أعمالي',
     ),
     BottomBarItem(
       route: Routes.favoritsRoute,

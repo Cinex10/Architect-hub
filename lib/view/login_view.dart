@@ -208,6 +208,36 @@ class LoginView extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
+                  const Divider(
+                    height: 4,
+                    indent: 20,
+                    endIndent: 20,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: ElevatedButton.icon(
+                      onPressed: () =>
+                          Provider.of<UserViewModel>(context, listen: false)
+                              .loginWithFacebook(),
+                      icon: const Icon(
+                        Icons.facebook,
+                        color: Colors.white,
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF1877F2),
+                      ),
+                      label: Text(
+                        'سجل الدخول بفيسبوك',
+                        style: getSemiBoldStyle(
+                          fontSize: 17,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  )
                   // const Spacer(
                   //   flex: 1,
                   // ),

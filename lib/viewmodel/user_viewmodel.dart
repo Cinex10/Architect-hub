@@ -8,7 +8,7 @@ class UserViewModel extends ChangeNotifier {
   bool isAgree = false;
   bool hasErrorTerms = false;
 
-  bool isLogged = true;
+  bool isLogged = false;
   bool isServiceProvider = true;
 
   void changeCountry(Country newCountry) {
@@ -38,6 +38,10 @@ class UserViewModel extends ChangeNotifier {
         notifyListeners();
       }
     }
+  }
+
+  void loginWithFacebook() {
+    // TODO: implement login with facebook
   }
 
   void logout() {

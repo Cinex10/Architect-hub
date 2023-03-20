@@ -1,4 +1,4 @@
-import 'package:architect_hub/data/network/response/status.dart';
+import 'package:architect_hub/ressources/enums/status.dart';
 import 'package:architect_hub/model/request_model.dart';
 import 'package:architect_hub/ressources/components/request_item.dart';
 import 'package:flutter/material.dart';
@@ -98,31 +98,29 @@ class RequestSingleTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: onRefresh,
-      child: ResponsiveGridList(
-        horizontalGridSpacing: 0,
-        verticalGridSpacing: 20,
-        horizontalGridMargin: 0,
-        verticalGridMargin: 20,
-        minItemWidth: 320,
-        minItemsPerRow: 1,
-        maxItemsPerRow: 6,
-        listViewBuilderOptions: ListViewBuilderOptions(
-          physics: getScrollPhysics(),
-        ),
-        children: List.generate(
-          getItemCount(),
-          (index) => getItemBuilder(context, index),
-        ),
-      ),
-      // child: ListView.separated(
-      //   separatorBuilder: (context, index) => const SizedBox(
-      //     height: 20,
-      //   ),
-      //   physics: getScrollPhysics(),
-      //   padding: const EdgeInsets.only(top: 20),
-      //   itemCount: getItemCount(),
-      //   itemBuilder: (context, index) => getItemBuilder(context, index),
-      // ),
+      child: Builder(builder: (context) {
+        if (requests!.isEmpty) {
+          return const Center(
+            child: Text('لا توجد طلبات الآن'),
+          );
+        }
+        return ResponsiveGridList(
+          horizontalGridSpacing: 0,
+          verticalGridSpacing: 20,
+          horizontalGridMargin: 0,
+          verticalGridMargin: 20,
+          minItemWidth: 320,
+          minItemsPerRow: 1,
+          maxItemsPerRow: 6,
+          listViewBuilderOptions: ListViewBuilderOptions(
+            physics: getScrollPhysics(),
+          ),
+          children: List.generate(
+            getItemCount(),
+            (index) => getItemBuilder(context, index),
+          ),
+        );
+      }),
     );
   }
 }

@@ -1,9 +1,12 @@
 import 'package:architect_hub/model/user_model.dart';
+import 'package:architect_hub/ressources/enums/request_types.dart';
+import 'package:architect_hub/ressources/extensions/request_type_extension.dart';
+import 'package:architect_hub/ressources/extensions/string_extension.dart';
 
 class RequestModel {
   int id;
   UserModel user;
-  String state;
+  RequestType state;
   String title;
   DateTime date;
   int numberOfOffers;
@@ -24,7 +27,7 @@ class RequestModel {
     return <String, dynamic>{
       'id': id,
       'user': user.toJson(),
-      'state': state,
+      'state': state.requestTypeToString,
       'title': title,
       'date': date.millisecondsSinceEpoch,
       'numberOfOffers': numberOfOffers,
@@ -37,7 +40,7 @@ class RequestModel {
     return RequestModel(
       id: map['id'] as int,
       user: UserModel.fromJson(map['user']),
-      state: map['state'] as String,
+      state: (map['state'] as String).requestTypeToEnum,
       title: map['title'] as String,
       // Ex: map['data'] = "1974-03-20 00:00:00.000"
       date: DateTime.parse(map['date'] as String),

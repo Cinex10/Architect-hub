@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 class LoginView extends StatelessWidget {
   LoginView({super.key});
 
-  // final formKey = GlobalKey<FormState>();
+  final _loginFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class LoginView extends StatelessWidget {
             horizontal: 20.w,
           ),
           child: Form(
-            key: Provider.of<UserViewModel>(context, listen: false).formKey,
+            key: _loginFormKey,
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Column(
@@ -199,7 +199,7 @@ class LoginView extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () =>
                           Provider.of<UserViewModel>(context, listen: false)
-                              .login(context),
+                              .login(context, _loginFormKey),
                       child: const Text(
                         'تسجيل الدخول',
                       ),

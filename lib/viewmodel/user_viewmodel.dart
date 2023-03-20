@@ -3,7 +3,6 @@ import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 
 class UserViewModel extends ChangeNotifier {
-  final formKey = GlobalKey<FormState>();
   Country country = Country.parse('EG');
   bool isAgree = false;
   bool hasErrorTerms = false;
@@ -26,8 +25,8 @@ class UserViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void login(BuildContext context) {
-    if (formKey.currentState!.validate()) {
+  void login(BuildContext context, GlobalKey<FormState> loginFormKey) {
+    if (loginFormKey.currentState!.validate()) {
       if (isAgree) {
         hasErrorTerms = false;
         isLogged = true;

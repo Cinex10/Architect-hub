@@ -1,4 +1,4 @@
-import 'package:architect_hub/data/network/response/status.dart';
+import 'package:architect_hub/ressources/enums/status.dart';
 import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
 import 'package:architect_hub/ressources/components/offers_list.dart';
 import 'package:architect_hub/ressources/routes_manager.dart';
@@ -54,7 +54,7 @@ class _OffersViewState extends State<OffersView> {
           }),
         ),
         backgroundColor: Colors.grey[200],
-        bottomNavigationBar: BottomNavBar(
+        bottomNavigationBar: const BottomNavBar(
           currentRoute: Routes.offersRoute,
         ),
       ),

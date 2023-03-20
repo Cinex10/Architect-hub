@@ -3,7 +3,6 @@ import 'package:architect_hub/ressources/components/filter_box.dart';
 import 'package:architect_hub/ressources/components/portfolio_single_tab.dart';
 import 'package:architect_hub/ressources/constant.dart';
 import 'package:architect_hub/ressources/routes_manager.dart';
-import 'package:architect_hub/view/search_view.dart';
 import 'package:architect_hub/viewmodel/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -128,24 +127,30 @@ class _HomeViewState extends State<HomeView> {
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
                   PortfolioSingleTab(
-                      status: value.status,
-                      portfolios: value.portfolios,
-                      onRefresh: () =>
-                          value.getPortfolios(withShimmerEffect: true)),
-                  const Center(
-                    child: Text("Tab 2 content"),
+                    status: value.status,
+                    portfolios: value.portfolios,
+                    onRefresh: () => value.getPortfolios(),
                   ),
-                  const Center(
-                    child: Text("Tab 3 content"),
+                  PortfolioSingleTab(
+                    status: value.status,
+                    portfolios: value.portfolios,
+                    onRefresh: () => value.getPortfolios(),
                   ),
-                  const Center(
-                    child: Text("Tab 3 content"),
+                  PortfolioSingleTab(
+                    status: value.status,
+                    portfolios: value.portfolios,
+                    onRefresh: () => value.getPortfolios(),
+                  ),
+                  PortfolioSingleTab(
+                    status: value.status,
+                    portfolios: value.portfolios,
+                    onRefresh: () => value.getPortfolios(),
                   ),
                 ],
               );
             }),
           ),
-          bottomNavigationBar: BottomNavBar(
+          bottomNavigationBar: const BottomNavBar(
             currentRoute: Routes.homeRoute,
           ),
         ),

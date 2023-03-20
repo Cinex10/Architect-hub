@@ -1,4 +1,4 @@
-import 'package:architect_hub/data/network/response/status.dart';
+import 'package:architect_hub/ressources/enums/status.dart';
 
 class ApiResponse<T> {
   Status? status;

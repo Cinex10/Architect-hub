@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class NewRequestViewModel extends ChangeNotifier {
-  final formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> newRequestFormKey = GlobalKey<FormState>();
 
   String? unitType;
   String? location;

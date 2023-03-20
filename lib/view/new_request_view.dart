@@ -38,7 +38,7 @@ class _NewRequestViewState extends State<NewRequestView> {
             horizontal: 20.w,
           ),
           child: Form(
-            key: _newRequestViewModel.formKey,
+            key: _newRequestViewModel.newRequestFormKey,
             child: ChangeNotifierProvider<NewRequestViewModel>(
               create: (_) => _newRequestViewModel,
               child: Consumer<NewRequestViewModel>(

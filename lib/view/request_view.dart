@@ -1,4 +1,4 @@
-import 'package:architect_hub/data/network/response/status.dart';
+import 'package:architect_hub/ressources/enums/status.dart';
 import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
 import 'package:architect_hub/ressources/components/request_single_tab.dart';
 import 'package:architect_hub/ressources/constant.dart';
@@ -76,19 +76,36 @@ class _RequestViewState extends State<RequestView> {
           ),
           body: ChangeNotifierProvider<RequestsViewModel>(
             create: (_) => _requestsViewModel,
-            child: Consumer<RequestsViewModel>(builder: (context, value, _) {
+            child:
+                Consumer<RequestsViewModel>(builder: (context, viewModel, _) {
               return TabBarView(
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
                   RequestSingleTab(
                     status: Status.completed,
-                    onRefresh: () async {},
-                    requests: value.requests,
+                    onRefresh: () => viewModel.getRequests(),
+                    requests: viewModel.allRequests,
                   ),
-                  const Text('data'),
-                  const Text('data'),
-                  const Text('data'),
-                  const Text('data'),
+                  RequestSingleTab(
+                    status: Status.completed,
+                    onRefresh: () async {},
+                    requests: viewModel.underReviewRequests,
+                  ),
+                  RequestSingleTab(
+                    status: Status.completed,
+                    onRefresh: () async {},
+                    requests: viewModel.inExecutionRequests,
+                  ),
+                  RequestSingleTab(
+                    status: Status.completed,
+                    onRefresh: () async {},
+                    requests: viewModel.completedRequests,
+                  ),
+                  RequestSingleTab(
+                    status: Status.completed,
+                    onRefresh: () async {},
+                    requests: viewModel.draftRequests,
+                  ),
                 ],
               );
             }),

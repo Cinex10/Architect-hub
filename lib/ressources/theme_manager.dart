@@ -5,12 +5,6 @@ import 'package:architect_hub/ressources/values_manager.dart';
 import 'package:flutter/material.dart';
 
 ThemeData getApplicationTheme() => ThemeData(
-      //main colors
-      primaryColor: ColorManager.primary,
-      primaryColorLight: ColorManager.lightPrimary,
-      primaryColorDark: ColorManager.darkPrimary,
-      disabledColor: ColorManager.grey,
-      splashColor: ColorManager.lightPrimary, // ripple effect color
       //appbar theme
       appBarTheme: AppBarTheme(
         backgroundColor: ColorManager.white,
@@ -83,6 +77,8 @@ ThemeData getApplicationTheme() => ThemeData(
       switchTheme: const SwitchThemeData(
         trackColor: MaterialStatePropertyAll(ColorManager.grey),
       ),
-      colorScheme:
-          ColorScheme.fromSwatch().copyWith(secondary: ColorManager.black),
+      colorScheme: ColorScheme.fromSwatch().copyWith(
+        secondary: ColorManager.black,
+        primary: Colors.black,
+      ),
     );

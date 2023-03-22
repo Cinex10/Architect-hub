@@ -115,8 +115,7 @@ class _HomeViewState extends State<HomeView> {
                   indicatorColor: Colors.black,
                   tabs: List.generate(
                     AppConstants.availableTypes.length,
-                    (index) =>
-                        Tab(text: AppConstants.availableTypes[index].name),
+                    (index) => Tab(text: AppConstants.availableTypes[index]),
                   )),
             ),
           ),
@@ -128,22 +127,27 @@ class _HomeViewState extends State<HomeView> {
                 children: [
                   PortfolioSingleTab(
                     status: value.status,
-                    portfolios: value.portfolios,
+                    portfolios: value.villasPortfolios,
                     onRefresh: () => value.getPortfolios(),
                   ),
                   PortfolioSingleTab(
                     status: value.status,
-                    portfolios: value.portfolios,
+                    portfolios: value.appartmentPortfolios,
                     onRefresh: () => value.getPortfolios(),
                   ),
                   PortfolioSingleTab(
                     status: value.status,
-                    portfolios: value.portfolios,
+                    portfolios: value.officePortfolios,
                     onRefresh: () => value.getPortfolios(),
                   ),
                   PortfolioSingleTab(
                     status: value.status,
-                    portfolios: value.portfolios,
+                    portfolios: value.shopPortfolios,
+                    onRefresh: () => value.getPortfolios(),
+                  ),
+                  PortfolioSingleTab(
+                    status: value.status,
+                    portfolios: value.medicalPortfolios,
                     onRefresh: () => value.getPortfolios(),
                   ),
                 ],

@@ -37,51 +37,12 @@ class RequestSingleTab extends StatelessWidget {
           horizontal: 20,
           vertical: 0,
         ),
-        child: Column(
-          children: [
-            Container(
-              height: 200,
-              decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.circular(15),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                right: 10,
-                left: 10,
-                top: 3,
-              ),
-              child: Row(
-                children: [
-                  const CircleAvatar(
-                    radius: 16,
-                    backgroundColor: Colors.redAccent,
-                  ),
-                  const Spacer(),
-                  Container(
-                    height: 20,
-                    width: 70,
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                  ),
-                  const Spacer(
-                    flex: 10,
-                  ),
-                  Container(
-                    height: 12,
-                    width: 34,
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
+        child: Container(
+          height: 220,
+          decoration: BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.circular(15),
+          ),
         ),
       ),
     );
@@ -99,7 +60,7 @@ class RequestSingleTab extends StatelessWidget {
     return RefreshIndicator(
       onRefresh: onRefresh,
       child: Builder(builder: (context) {
-        if (requests!.isEmpty) {
+        if ((requests!.isEmpty) & (status == Status.completed)) {
           return const Center(
             child: Text('لا توجد طلبات الآن'),
           );
@@ -113,7 +74,8 @@ class RequestSingleTab extends StatelessWidget {
           minItemsPerRow: 1,
           maxItemsPerRow: 6,
           listViewBuilderOptions: ListViewBuilderOptions(
-            physics: getScrollPhysics(),
+            physics: const AlwaysScrollableScrollPhysics(
+                parent: BouncingScrollPhysics()),
           ),
           children: List.generate(
             getItemCount(),

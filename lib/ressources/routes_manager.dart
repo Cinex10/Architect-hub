@@ -1,3 +1,5 @@
+import 'package:architect_hub/model/chat_model.dart';
+import 'package:architect_hub/model/message_model.dart';
 import 'package:architect_hub/view/chat_view.dart';
 import 'package:architect_hub/view/favorite_view.dart';
 import 'package:architect_hub/view/home_view.dart';
@@ -64,7 +66,6 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) {
             final int arg = settings.arguments as int;
-
             return OffersView(
               idRequest: arg,
             );
@@ -73,7 +74,10 @@ class RouteGenerator {
       case Routes.chatRoute:
         return MaterialPageRoute(
           builder: (_) {
-            return const ChatView();
+            final ChatModel arg = settings.arguments as ChatModel;
+            return ChatView(
+              chat: arg,
+            );
           },
         );
       case Routes.newRequestRoute:

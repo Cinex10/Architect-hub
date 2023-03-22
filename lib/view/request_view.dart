@@ -82,28 +82,28 @@ class _RequestViewState extends State<RequestView> {
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
                   RequestSingleTab(
-                    status: Status.completed,
+                    status: viewModel.status,
                     onRefresh: () => viewModel.getRequests(),
                     requests: viewModel.allRequests,
                   ),
                   RequestSingleTab(
-                    status: Status.completed,
-                    onRefresh: () async {},
+                    status: viewModel.status,
+                    onRefresh: () => viewModel.getRequests(),
                     requests: viewModel.underReviewRequests,
                   ),
                   RequestSingleTab(
-                    status: Status.completed,
-                    onRefresh: () async {},
+                    status: viewModel.status,
+                    onRefresh: () => viewModel.getRequests(),
                     requests: viewModel.inExecutionRequests,
                   ),
                   RequestSingleTab(
-                    status: Status.completed,
-                    onRefresh: () async {},
+                    status: viewModel.status,
+                    onRefresh: () => viewModel.getRequests(),
                     requests: viewModel.completedRequests,
                   ),
                   RequestSingleTab(
-                    status: Status.completed,
-                    onRefresh: () async {},
+                    status: viewModel.status,
+                    onRefresh: () => viewModel.getRequests(),
                     requests: viewModel.draftRequests,
                   ),
                 ],

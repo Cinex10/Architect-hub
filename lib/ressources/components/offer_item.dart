@@ -1,9 +1,9 @@
 import 'package:architect_hub/model/offre_model.dart';
 import 'package:architect_hub/ressources/components/custom_vertical_divider.dart';
 import 'package:architect_hub/ressources/components/vertical_label.dart';
+import 'package:architect_hub/ressources/extensions/datetime_extension.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class OfferItem extends StatelessWidget {
   const OfferItem({
@@ -58,7 +58,7 @@ class OfferItem extends StatelessWidget {
                         const CustomVerticalDivider(),
                         VerticalLabel(
                           label: 'تاريخ بدء العمل',
-                          text: DateFormat.yMd().format(offre.startDate),
+                          text: offre.startDate.yMd,
                         ),
                         const CustomVerticalDivider(),
                         VerticalLabel(

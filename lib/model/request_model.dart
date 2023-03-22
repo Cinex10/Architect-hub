@@ -2,15 +2,27 @@ import 'package:architect_hub/model/user_model.dart';
 import 'package:architect_hub/ressources/enums/request_types.dart';
 import 'package:architect_hub/ressources/extensions/request_type_extension.dart';
 import 'package:architect_hub/ressources/extensions/string_extension.dart';
+import 'package:hive/hive.dart';
 
+part 'request_model.g.dart';
+
+@HiveType(typeId: 2)
 class RequestModel {
+  @HiveField(0)
   int id;
+  @HiveField(1)
   UserModel user;
+  @HiveField(2)
   RequestType state;
+  @HiveField(3)
   String title;
+  @HiveField(4)
   DateTime date;
+  @HiveField(5)
   int numberOfOffers;
+  @HiveField(6)
   List<String> images;
+  @HiveField(7)
   List<String> usersProfilePicture;
   RequestModel({
     required this.id,
@@ -58,6 +70,6 @@ class RequestModel {
 
   @override
   String toString() {
-    return 'RequestModel(id: $id, user: $user, state: $state, title: $title, date: $date, numberOfOffers: $numberOfOffers, usersProfilePicture: $usersProfilePicture ,  images: $images)';
+    return 'RequestModel(id: $id, user: $user, state: $state, title: $title, date: $date, numberOfOffers: $numberOfOffers, usersProfilePicture: $usersProfilePicture ,  images: $images , state: ${state.requestTypeToString})';
   }
 }

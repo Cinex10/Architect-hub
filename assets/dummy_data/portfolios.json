@@ -6,7 +6,10 @@
             "profilePicture": "assets/images/1.jpg",
             "rating": 2.5
         },
+        "propertyType" : "فيلا",
         "images": [
+            "assets/images/1.jpg",
+            "assets/images/1.jpg",
             "assets/images/1.jpg",
             "assets/images/2.jpg"
         ]
@@ -15,10 +18,11 @@
         "id": 2,
         "user": {
             "id": 2,
-            "username": "محمد",
+            "username": "ريان",
             "profilePicture": "assets/images/1.jpg",
             "rating": 3.5
         },
+        "propertyType" : "شقة",
         "images": [
             "assets/images/1.jpg",
             "assets/images/2.jpg",
@@ -34,6 +38,75 @@
             "profilePicture": "assets/images/1.jpg",
             "rating": 4.3
         },
+        "propertyType" : "فيلا",
+        "images": [
+            "assets/images/1.jpg",
+            "assets/images/2.jpg",
+            "assets/images/1.jpg",
+            "assets/images/2.jpg",
+            "assets/images/1.jpg",
+            "assets/images/2.jpg"
+        ]
+    },
+    {
+        "id": 4,
+        "user": {
+            "id": 1,
+            "username": "عبد الحميد",
+            "profilePicture": "assets/images/1.jpg",
+            "rating": 2.5
+        },
+        "propertyType" : "مكتب",
+        "images": [
+            "assets/images/1.jpg",
+            "assets/images/1.jpg",
+            "assets/images/1.jpg",
+            "assets/images/2.jpg"
+        ]
+    },
+    {
+        "id": 5,
+        "user": {
+            "id": 2,
+            "username": "فيصل",
+            "profilePicture": "assets/images/1.jpg",
+            "rating": 3.5
+        },
+        "propertyType" : "متجر",
+        "images": [
+            "assets/images/1.jpg",
+            "assets/images/2.jpg",
+            "assets/images/1.jpg",
+            "assets/images/2.jpg"
+        ]
+    },
+    {
+        "id": 6,
+        "user": {
+            "id": 3,
+            "username": "صلاح",
+            "profilePicture": "assets/images/1.jpg",
+            "rating": 3.2
+        },
+        "propertyType" : "شقة",
+        "images": [
+            "assets/images/1.jpg",
+            "assets/images/2.jpg",
+            "assets/images/1.jpg",
+            "assets/images/2.jpg",
+            "assets/images/1.jpg",
+            "assets/images/2.jpg"
+        ]
+    },
+    {
+        "id": 7,
+        "user": {
+            "id": 3,
+            "username": "صلاح",
+            "profilePicture": "assets/images/1.jpg",
+            "rating": 3.2
+        },
+        "propertyType" : "عيادة",
         "images": [
             "assets/images/1.jpg",
             "assets/images/2.jpg",

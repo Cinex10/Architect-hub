@@ -52,7 +52,7 @@ class _PortfolioItemState extends State<PortfolioItem> {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(
-                            'assets/images/${(index % 2) + 1}.jpg',
+                            widget.portifolioModel.images[index],
                           ),
                           fit: BoxFit.cover,
                         ),
@@ -78,7 +78,7 @@ class _PortfolioItemState extends State<PortfolioItem> {
                     onTap: (isLiked) async {
                       for (PortifolioModel element
                           in Provider.of<HomeViewModel>(context, listen: false)
-                              .portfolios) {
+                              .allPortfolios) {
                         if (element == widget.portifolioModel) {
                           element.isFavor = !isLiked;
                           break;
@@ -204,7 +204,7 @@ class _PortfolioItemState extends State<PortfolioItem> {
                     color: Colors.black,
                   ),
                   Text(
-                    ' 2.5',
+                    ' ${widget.portifolioModel.user.rating.toStringAsFixed(1)}',
                     style: getRegularStyle(
                       color: ColorManager.black,
                     ),

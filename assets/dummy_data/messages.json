@@ -1,0 +1,155 @@
+[
+    {
+        "id" : 1,
+        "secondUser" : {
+            "id": 2,
+            "username": "عبد الحميد",
+            "profilePicture": "assets/images/1.jpg",
+            "rating": 2.5
+        },
+        "chat" : [
+            {
+                "isIncoming" : false,
+                "date": "2023-01-27 19:20:34.123",
+                "content": "بالطبع أخي شو عايز؟",
+                "seen" : true,
+                "sender" : {
+                    "id": 1,
+                    "username": "معتز",
+                    "profilePicture": "assets/images/1.jpg",
+                    "rating": 2.5
+                }
+            },
+            {
+                "isIncoming" : true,
+                "date": "2023-01-27 19:20:34.123",
+                "content": "أهلا اخ صلاح هل يمكننا الإتفاق على صفقة مرضية للطرفين",
+                "seen" : true,
+                "sender" : {
+                    "id": 2,
+                    "username": "عبد الحميد",
+                    "profilePicture": "assets/images/1.jpg",
+                    "rating": 2.5
+                }
+            },
+            {
+                "isIncoming" : true,
+                "date": "2023-01-27 19:18:34.123",
+                "content": "أهلا اخ صلاح هل يمكننا الإتفاق على صفقة مرضية للطرفين",
+                "seen" : true,
+                "sender" : {
+                    "id": 2,
+                    "username": "عبد الحميد",
+                    "profilePicture": "assets/images/1.jpg",
+                    "rating": 2.5
+                }
+            },
+            {
+                "isIncoming" : true,
+                "date": "2023-01-27 19:14:34.123",
+                "content": "أهلا اخ صلاح هل يمكننا الإتفاق على صفقة مرضية للطرفين",
+                "seen" : true,
+                "sender" : {
+                    "id": 2,
+                    "username": "عبد الحميد",
+                    "profilePicture": "assets/images/1.jpg",
+                    "rating": 2.5
+                }
+            },
+            {
+                "isIncoming" : true,
+                "date": "2023-01-27 19:10:34.123",
+                "content": "أهلا اخ صلاح هل يمكننا الإتفاق على صفقة مرضية للطرفين",
+                "seen" : true,
+                "sender" : {
+                    "id": 2,
+                    "username": "عبد الحميد",
+                    "profilePicture": "assets/images/1.jpg",
+                    "rating": 2.5
+                }
+            },
+            {
+                "isIncoming" : true,
+                "date": "2023-01-27 19:00:34.123",
+                "content": "أهلا اخ صلاح هل يمكننا الإتفاق على صفقة مرضية للطرفين",
+                "seen" : true,
+                "sender" : {
+                    "id": 2,
+                    "username": "عبد الحميد",
+                    "profilePicture": "assets/images/1.jpg",
+                    "rating": 2.5
+                }
+            }
+        ]
+    },{
+        "id" : 1,
+        "secondUser" : {
+            "id": 2,
+            "username": "عبد الحميد",
+            "profilePicture": "assets/images/1.jpg",
+            "rating": 2.5
+        },
+        "chat" : [            
+            {
+                "isIncoming" : true,
+                "date": "2023-01-27 19:20:34.123",
+                "content": "أهلا اخ صلاح هل يمكننا الإتفاق على صفقة مرضية للطرفين",
+                "seen" : false,
+                "sender" : {
+                    "id": 2,
+                    "username": "عبد الحميد",
+                    "profilePicture": "assets/images/1.jpg",
+                    "rating": 2.5
+                }
+            },
+            {
+                "isIncoming" : true,
+                "date": "2023-01-27 19:18:34.123",
+                "content": "أهلا اخ صلاح هل يمكننا الإتفاق على صفقة مرضية للطرفين",
+                "seen" : false,
+                "sender" : {
+                    "id": 2,
+                    "username": "عبد الحميد",
+                    "profilePicture": "assets/images/1.jpg",
+                    "rating": 2.5
+                }
+            },
+            {
+                "isIncoming" : true,
+                "date": "2023-01-27 19:14:34.123",
+                "content": "أهلا اخ صلاح هل يمكننا الإتفاق على صفقة مرضية للطرفين",
+                "seen" : false,
+                "sender" : {
+                    "id": 2,
+                    "username": "عبد الحميد",
+                    "profilePicture": "assets/images/1.jpg",
+                    "rating": 2.5
+                }
+            },
+            {
+                "isIncoming" : true,
+                "date": "2023-01-27 19:10:34.123",
+                "content": "أهلا اخ صلاح هل يمكننا الإتفاق على صفقة مرضية للطرفين",
+                "seen" : false,
+                "sender" : {
+                    "id": 2,
+                    "username": "عبد الحميد",
+                    "profilePicture": "assets/images/1.jpg",
+                    "rating": 2.5
+                }
+            },
+            {
+                "isIncoming" : true,
+                "date": "2023-01-27 19:00:34.123",
+                "content": "أهلا اخ صلاح هل يمكننا الإتفاق على صفقة مرضية للطرفين",
+                "seen" : false,
+                "sender" : {
+                    "id": 2,
+                    "username": "عبد الحميد",
+                    "profilePicture": "assets/images/1.jpg",
+                    "rating": 2.5
+                }
+            }
+        ]
+    }
+]

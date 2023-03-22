@@ -1,10 +1,9 @@
 import 'package:architect_hub/model/request_model.dart';
-import 'package:architect_hub/ressources/enums/request_types.dart';
+import 'package:architect_hub/ressources/extensions/datetime_extension.dart';
 import 'package:architect_hub/ressources/extensions/request_type_extension.dart';
 import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class RequestItem extends StatelessWidget {
   const RequestItem({super.key, required this.request});
@@ -55,7 +54,7 @@ class RequestItem extends StatelessWidget {
             style: getBoldStyle(fontSize: 18),
           ),
           Text(
-            DateFormat.yMd().format(request.date),
+            request.date.yMd,
             style: getMediumStyle(fontSize: 13, color: Colors.black38),
           ),
           const SizedBox(

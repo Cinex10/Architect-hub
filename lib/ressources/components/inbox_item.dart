@@ -1,3 +1,4 @@
+import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:flutter/material.dart';
 
 class InboxItem extends StatelessWidget {
@@ -7,9 +8,12 @@ class InboxItem extends StatelessWidget {
     required this.title,
     this.middleText,
     this.onTap,
+    this.isHighlighted = false,
     this.isDirectionReversed = false,
-    this.middleTextStyle = const TextStyle(fontSize: 13),
-    this.titleStyle = const TextStyle(fontSize: 16),
+    this.middleTextStyle,
+    this.thirdLineTextStyle,
+    this.titleStyle,
+    this.circleAvatarRadius = 25.0,
   }) : super(key: key);
 
   final String thirdLineText;
@@ -17,8 +21,11 @@ class InboxItem extends StatelessWidget {
   final String? middleText;
   final void Function()? onTap;
   final bool isDirectionReversed;
-  final TextStyle titleStyle;
-  final TextStyle middleTextStyle;
+  final TextStyle? titleStyle;
+  final TextStyle? middleTextStyle;
+  final TextStyle? thirdLineTextStyle;
+  final bool isHighlighted;
+  final double circleAvatarRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +35,14 @@ class InboxItem extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: SizedBox(
-          height: 80,
+          // height: 80,
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CircleAvatar(
-                radius: 25,
+              CircleAvatar(
+                radius: circleAvatarRadius,
                 backgroundColor: Colors.blue,
-                backgroundImage: AssetImage('assets/images/1.jpg'),
+                backgroundImage: const AssetImage('assets/images/1.jpg'),
               ),
               const SizedBox(
                 width: 10,
@@ -47,19 +54,31 @@ class InboxItem extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: titleStyle,
+                      style: (titleStyle != null)
+                          ? titleStyle
+                          : !isHighlighted
+                              ? getRegularStyle(
+                                  fontSize: 16, color: Colors.black54)
+                              : getBoldStyle(fontSize: 16),
                     ),
                     if (middleText != null)
                       Text(
                         middleText!,
-                        style: middleTextStyle,
+                        style: (middleTextStyle != null)
+                            ? middleTextStyle
+                            : !isHighlighted
+                                ? getRegularStyle(
+                                    fontSize: 13, color: Colors.black54)
+                                : getBoldStyle(fontSize: 13),
                       ),
                     Text(
                       thirdLineText,
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Colors.black26,
-                      ),
+                      style: (thirdLineTextStyle != null)
+                          ? thirdLineTextStyle!
+                          : !isHighlighted
+                              ? getRegularStyle(
+                                  fontSize: 13, color: Colors.black54)
+                              : getBoldStyle(fontSize: 13),
                     ),
                   ],
                 ),

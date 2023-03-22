@@ -1,5 +1,5 @@
+import 'package:architect_hub/ressources/extensions/datetime_extension.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class NewRequestViewModel extends ChangeNotifier {
   GlobalKey<FormState> newRequestFormKey = GlobalKey<FormState>();
@@ -17,8 +17,7 @@ class NewRequestViewModel extends ChangeNotifier {
         lastDate: DateTime(2101));
 
     if (pickedDate != null) {
-      String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
-      dateinput.text = formattedDate;
+      dateinput.text = pickedDate.yyyy_MM_dd;
       notifyListeners();
     } else {
       // "Date is not selected"

@@ -1,0 +1,38 @@
+[
+    {
+        "id" : 1,
+        "secondUser" : {
+            "id": 2,
+            "username": "عبد الحميد",
+            "profilePicture": "assets/images/1.jpg",
+            "rating": 2.5
+        },
+        "content" : "لا تنسى تقييم تجربتك مع صالح",
+        "date": "2023-03-22 12:00:34.123",
+        "seen" : false
+    },
+    {
+        "id" : 2,
+        "secondUser" : {
+            "id": 2,
+            "username": "عبد الحميد",
+            "profilePicture": "assets/images/1.jpg",
+            "rating": 2.5
+        },
+        "content" : "لا تنسى تقييم تجربتك مع صالح",
+        "date": "2023-03-22 11:59:34.123",
+        "seen" : false
+    },
+    {
+        "id" : 3,
+        "secondUser" : {
+            "id": 2,
+            "username": "عبد الحميد",
+            "profilePicture": "assets/images/1.jpg",
+            "rating": 2.5
+        },
+        "content" : "لا تنسى تقييم تجربتك مع صالح",
+        "date": "2023-03-22 11:20:34.123",
+        "seen" : true
+    }
+]

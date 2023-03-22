@@ -1,3 +1,4 @@
+import 'package:architect_hub/ressources/enums/property_type.dart';
 import 'package:architect_hub/ressources/enums/request_types.dart';
 
 extension StringExtension on String {
@@ -13,6 +14,23 @@ extension StringExtension on String {
         return RequestType.draftRequest;
       default:
         return RequestType.draftRequest;
+    }
+  }
+
+  PropertyType get propertyTypeToEnum {
+    switch (this) {
+      case 'فيلا':
+        return PropertyType.villa;
+      case 'شقة':
+        return PropertyType.apartement;
+      case 'مكتب':
+        return PropertyType.offices;
+      case 'متجر':
+        return PropertyType.shop;
+      case 'عيادة':
+        return PropertyType.medical;
+      default:
+        return PropertyType.villa;
     }
   }
 }

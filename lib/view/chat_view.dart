@@ -1,13 +1,16 @@
+import 'package:architect_hub/model/chat_model.dart';
 import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
 import 'package:architect_hub/ressources/components/inbox_item.dart';
+import 'package:architect_hub/ressources/extensions/datetime_extension.dart';
 import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ChatView extends StatelessWidget {
-  const ChatView({super.key});
+  const ChatView({super.key, required this.chat});
 
+  final ChatModel chat;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -16,6 +19,7 @@ class ChatView extends StatelessWidget {
           preferredSize: const Size.fromHeight(100),
           child: AppBar(
             elevation: 3,
+            automaticallyImplyLeading: false,
             flexibleSpace: Container(
               margin: EdgeInsetsDirectional.symmetric(
                   vertical: 20, horizontal: (1.sw > 550) ? 0.27.sw : 20.w),
@@ -29,7 +33,7 @@ class ChatView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'أحمد معتز',
+                        chat.secondUser.username,
                         style: getBoldStyle(
                           fontSize: 20,
                         ),
@@ -55,13 +59,25 @@ class ChatView extends StatelessWidget {
             children: [
               Expanded(
                 child: ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: 10,
-                  itemBuilder: (context, index) => InboxItem(
-                    title: (index % 5).isEven ? 'صالح' : 'أحمد معتز',
-                    middleText: 'تص تجريبي',
-                    thirdLineText: '2022 Jan 19',
-                    isDirectionReversed: (index % 5).isEven,
+                  physics: const AlwaysScrollableScrollPhysics(
+                    parent: BouncingScrollPhysics(),
+                  ),
+                  reverse: true,
+                  itemCount: chat.chat.length,
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5),
+                    child: InboxItem(
+                      title: chat.chat[index].sender.username,
+                      middleText: chat.chat[index].content,
+                      thirdLineText: chat.chat[index].date.getTimeElapsedArabic,
+                      isDirectionReversed: chat.chat[index].isIncoming,
+                      titleStyle: getRegularStyle(fontSize: 16),
+                      middleTextStyle: getRegularStyle(
+                        fontSize: 13,
+                        color: Colors.black87,
+                      ),
+                      circleAvatarRadius: 18,
+                    ),
                   ),
                 ),
               ),

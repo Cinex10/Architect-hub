@@ -1,44 +1,53 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'portfolio_model.dart';
+part of 'request_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class PortifolioModelAdapter extends TypeAdapter<PortifolioModel> {
+class RequestModelAdapter extends TypeAdapter<RequestModel> {
   @override
-  final int typeId = 0;
+  final int typeId = 2;
 
   @override
-  PortifolioModel read(BinaryReader reader) {
+  RequestModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return PortifolioModel(
+    return RequestModel(
       id: fields[0] as int,
       user: fields[1] as UserModel,
-      images: (fields[2] as List).cast<String>(),
-      isFavor: fields[3] as bool,
-      propertyType: fields[4] as PropertyType,
+      state: fields[2] as RequestType,
+      title: fields[3] as String,
+      date: fields[4] as DateTime,
+      numberOfOffers: fields[5] as int,
+      usersProfilePicture: (fields[7] as List).cast<String>(),
+      images: (fields[6] as List).cast<String>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, PortifolioModel obj) {
+  void write(BinaryWriter writer, RequestModel obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.user)
       ..writeByte(2)
-      ..write(obj.images)
+      ..write(obj.state)
       ..writeByte(3)
-      ..write(obj.isFavor)
+      ..write(obj.title)
       ..writeByte(4)
-      ..write(obj.propertyType);
+      ..write(obj.date)
+      ..writeByte(5)
+      ..write(obj.numberOfOffers)
+      ..writeByte(6)
+      ..write(obj.images)
+      ..writeByte(7)
+      ..write(obj.usersProfilePicture);
   }
 
   @override
@@ -47,7 +56,7 @@ class PortifolioModelAdapter extends TypeAdapter<PortifolioModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is PortifolioModelAdapter &&
+      other is RequestModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

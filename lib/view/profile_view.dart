@@ -1,10 +1,10 @@
 import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
+import 'package:architect_hub/ressources/extensions/datetime_extension.dart';
 import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:architect_hub/viewmodel/request_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 import 'package:readmore/readmore.dart';
 import 'package:responsive_grid_list/responsive_grid_list.dart';
 
@@ -216,7 +216,7 @@ class _ProfileViewState extends State<ProfileView> {
               ),
             ],
           ),
-          bottomNavigationBar: BottomNavBar(
+          bottomNavigationBar: const BottomNavBar(
             currentRoute: Routes.profileRoute,
           ),
         ),
@@ -276,7 +276,7 @@ class RatingBox extends StatelessWidget {
               radius: 20,
             ),
             title: Text(username),
-            subtitle: Text(DateFormat.yMd().format(date)),
+            subtitle: Text(date.yMd),
             trailing: FittedBox(
               child: Row(
                 children: [

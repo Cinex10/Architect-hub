@@ -1,4 +1,3 @@
-import 'package:architect_hub/model/request_model.dart';
 import 'package:architect_hub/model/user_model.dart';
 
 class OffreModel {
@@ -25,7 +24,7 @@ class OffreModel {
       'idRequest': idRequest,
       'user': user.toJson(),
       'durationInDays': durationInDays,
-      'startDate': startDate.millisecondsSinceEpoch,
+      'startDate': startDate.toIso8601String(),
       'price': price,
       'isIncludeServices': isIncludeServices,
     };

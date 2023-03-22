@@ -1,14 +1,14 @@
 import 'package:architect_hub/model/bottom_bar_item.dart';
-import 'package:architect_hub/model/type_model.dart';
 import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:flutter/material.dart';
 
 class AppConstants {
-  static List<TypeModel> availableTypes = [
-    const TypeModel(name: 'فيلا'),
-    const TypeModel(name: 'شقة'),
-    const TypeModel(name: 'مكتب'),
-    const TypeModel(name: 'متجر'),
+  static List<String> availableTypes = [
+    'فيلا',
+    'شقة',
+    'مكتب',
+    'متجر',
+    'عيادة',
   ];
 
   static List<String> requestTypes = [

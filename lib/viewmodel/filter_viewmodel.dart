@@ -1,5 +1,4 @@
 import 'package:architect_hub/model/filter_model.dart';
-import 'package:architect_hub/repository/remote/content_repository/content_repository.dart';
 import 'package:architect_hub/ressources/constant.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +8,7 @@ class FilterViewModel extends ChangeNotifier {
     price: 256.4,
     isIncludeMaterials: true,
     location: 'default location',
-    availableTypes: AppConstants.availableTypes,
+    selectedTypes: [],
   );
 
   final TextEditingController ratingTextController =
@@ -36,11 +35,16 @@ class FilterViewModel extends ChangeNotifier {
   }
 
   void updateSelectedTypes(String type) {
-    for (TypeFilterModel element in filterModel.types) {
-      if (element.name == type) {
-        element.isSelected = !element.isSelected;
-        break;
+    bool isUpdated = false;
+    for (String selectedType in filterModel.selectedTypes) {
+      if (selectedType == type) {
+        isUpdated = filterModel.selectedTypes.remove(selectedType);
+        return;
       }
+    }
+
+    if (!isUpdated) {
+      filterModel.selectedTypes.add(type);
     }
     notifyListeners();
   }
@@ -51,9 +55,7 @@ class FilterViewModel extends ChangeNotifier {
   }
 
   void clearAllFilters() {
-    for (TypeFilterModel element in filterModel.types) {
-      element.isSelected = false;
-    }
+    filterModel.selectedTypes.clear();
     priceTextController.text = '';
     filterModel.minRating = 2.5;
     ratingTextController.text = '2.5';
@@ -61,9 +63,8 @@ class FilterViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool isTypeSelected(int index) => filterModel.types[index].isSelected;
-
-  List<TypeFilterModel> get types => filterModel.types;
+  bool isTypeSelected(int index) =>
+      filterModel.selectedTypes.contains(AppConstants.availableTypes[index]);
 
   Future<void> showResult(BuildContext context) async {
     // final ContentRepository repository = ContentRepository();

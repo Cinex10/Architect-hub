@@ -116,10 +116,10 @@ class FilterBox extends StatelessWidget {
                         alignment: WrapAlignment.center,
                         spacing: 10,
                         children: List.generate(
-                          filterViewModel.types.length,
+                          AppConstants.availableTypes.length,
                           (index) => GestureDetector(
                             onTap: () => filterViewModel.updateSelectedTypes(
-                                filterViewModel.types[index].name),
+                                AppConstants.availableTypes[index]),
                             child: Chip(
                               backgroundColor:
                                   filterViewModel.isTypeSelected(index)
@@ -128,8 +128,7 @@ class FilterBox extends StatelessWidget {
                               elevation: filterViewModel.isTypeSelected(index)
                                   ? 9
                                   : null,
-                              label: Text(filterViewModel
-                                  .filterModel.types[index].name),
+                              label: Text(AppConstants.availableTypes[index]),
                               labelStyle: filterViewModel.isTypeSelected(index)
                                   ? getMediumStyle(
                                       color: Colors.white,

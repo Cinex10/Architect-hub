@@ -1,4 +1,3 @@
-import 'package:architect_hub/ressources/enums/status.dart';
 import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
 import 'package:architect_hub/ressources/components/request_single_tab.dart';
 import 'package:architect_hub/ressources/constant.dart';
@@ -110,7 +109,7 @@ class _RequestViewState extends State<RequestView> {
               );
             }),
           ),
-          backgroundColor: Colors.grey[200],
+          // backgroundColor: Colors.grey[200],
           bottomNavigationBar: const BottomNavBar(
             currentRoute: Routes.requestRoute,
           ),

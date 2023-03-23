@@ -1,6 +1,5 @@
 import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
 import 'package:architect_hub/ressources/components/portfolio_item.dart';
-import 'package:architect_hub/ressources/constant.dart';
 import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:architect_hub/ressources/values_manager.dart';

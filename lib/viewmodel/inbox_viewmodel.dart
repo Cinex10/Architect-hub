@@ -15,6 +15,16 @@ class InboxViewModel extends ChangeNotifier {
   List<MessageModel> chatHeads = [];
   List<NotificationModel> notifications = [];
 
+  int? getTotalNotificationsCount() {
+    int m = (nbUnreadMessages != null) ? nbUnreadMessages! : 0;
+    int n = (nbUnreadNotifications != null) ? nbUnreadNotifications! : 0;
+    int sum = m + n;
+    if (sum == 0) {
+      return null;
+    }
+    return sum;
+  }
+
   Status loadingStatus = Status.completed;
 
   void changeLoadingStatus(Status newStatus) {
@@ -29,6 +39,7 @@ class InboxViewModel extends ChangeNotifier {
     nbUnreadMessages = chatHeads
         .map((chatHead) => !chatHead.seen ? 1 : 0)
         .reduce((value, element) => value + element);
+    notifyListeners();
     if (withShimmerEffect) changeLoadingStatus(Status.completed);
   }
 

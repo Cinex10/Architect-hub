@@ -8,6 +8,9 @@ ThemeData getApplicationTheme() => ThemeData(
       //appbar theme
       appBarTheme: AppBarTheme(
         backgroundColor: ColorManager.white,
+        iconTheme: const IconThemeData(
+          color: Colors.black,
+        ),
         elevation: AppSize.s4,
         shadowColor: ColorManager.grey,
         titleTextStyle:
@@ -77,6 +80,7 @@ ThemeData getApplicationTheme() => ThemeData(
       switchTheme: const SwitchThemeData(
         trackColor: MaterialStatePropertyAll(ColorManager.grey),
       ),
+      scaffoldBackgroundColor: Colors.grey[200],
       colorScheme: ColorScheme.fromSwatch().copyWith(
         secondary: ColorManager.black,
         primary: Colors.black,

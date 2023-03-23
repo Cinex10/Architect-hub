@@ -1,6 +1,7 @@
 import 'package:architect_hub/model/bottom_bar_item.dart';
 import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AppConstants {
   static List<String> availableTypes = [

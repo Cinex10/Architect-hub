@@ -20,6 +20,7 @@ class LoginView extends StatelessWidget {
         // resizeToAvoidBottomInset: false,
         body: Container(
           width: 1.sw,
+          margin: EdgeInsets.symmetric(horizontal: 1.sw > 900 ? 0.2.sw : 10),
           padding: EdgeInsets.symmetric(
             horizontal: 20.w,
           ),

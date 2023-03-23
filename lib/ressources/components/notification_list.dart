@@ -3,6 +3,7 @@ import 'package:architect_hub/ressources/components/inbox_item.dart';
 import 'package:architect_hub/ressources/enums/status.dart';
 import 'package:architect_hub/ressources/extensions/datetime_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsive_grid_list/responsive_grid_list.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -97,22 +98,27 @@ class NotificationsList extends StatelessWidget {
             child: Text('لا توجد إشعارات الآن'),
           );
         }
-        return ResponsiveGridList(
-          horizontalGridSpacing: 0,
-          verticalGridSpacing: 20,
-          horizontalGridMargin: 0,
-          verticalGridMargin: 20,
-          minItemWidth: 320,
-          minItemsPerRow: 1,
-          maxItemsPerRow: 6,
-          listViewBuilderOptions: ListViewBuilderOptions(
-            physics: const AlwaysScrollableScrollPhysics(
-              parent: BouncingScrollPhysics(),
+        return Container(
+          color: Colors.white,
+          margin: EdgeInsets.symmetric(horizontal: 1.sw > 900 ? 0.2.sw : 0),
+          padding: EdgeInsets.symmetric(horizontal: 1.sw > 900 ? 20.w : 10),
+          child: ResponsiveGridList(
+            horizontalGridSpacing: 0,
+            verticalGridSpacing: 20,
+            horizontalGridMargin: 0,
+            verticalGridMargin: 20,
+            minItemWidth: 320,
+            minItemsPerRow: 1,
+            maxItemsPerRow: 6,
+            listViewBuilderOptions: ListViewBuilderOptions(
+              physics: const AlwaysScrollableScrollPhysics(
+                parent: BouncingScrollPhysics(),
+              ),
             ),
-          ),
-          children: List.generate(
-            getItemCount(),
-            (index) => getItemBuilder(context, index),
+            children: List.generate(
+              getItemCount(),
+              (index) => getItemBuilder(context, index),
+            ),
           ),
         );
       }),

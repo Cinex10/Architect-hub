@@ -5,10 +5,12 @@ import 'package:architect_hub/ressources/enums/property_type.dart';
 import 'package:architect_hub/ressources/enums/request_types.dart';
 import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/theme_manager.dart';
+import 'package:architect_hub/view/home_view.dart';
 import 'package:architect_hub/view/login_view.dart';
 import 'package:architect_hub/viewmodel/favorite_viewmodel.dart';
 import 'package:architect_hub/viewmodel/filter_viewmodel.dart';
 import 'package:architect_hub/viewmodel/home_viewmodel.dart';
+import 'package:architect_hub/viewmodel/inbox_viewmodel.dart';
 import 'package:architect_hub/viewmodel/user_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -42,6 +44,9 @@ void main() async {
         ChangeNotifierProvider<UserViewModel>(
           create: (_) => UserViewModel(),
         ),
+        ChangeNotifierProvider<InboxViewModel>(
+          create: (_) => InboxViewModel(),
+        ),
       ],
       child: ScreenUtilInit(
         builder: (context, child) {
@@ -58,7 +63,7 @@ void main() async {
             home: child,
           );
         },
-        child: LoginView(),
+        child: const HomeView(),
       ),
     ),
   );

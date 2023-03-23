@@ -4,6 +4,7 @@ import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:architect_hub/viewmodel/user_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class SettingView extends StatelessWidget {
@@ -12,13 +13,13 @@ class SettingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-      ),
-      body: Padding(
+      body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15),
+        color: Colors.white,
+        margin: EdgeInsets.symmetric(horizontal: 1.sw > 900 ? 0.2.sw : 10),
         child: Column(
           children: [
+            const Spacer(),
             ListTile(
               leading: const CircleAvatar(
                 radius: 22,

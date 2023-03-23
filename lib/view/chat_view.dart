@@ -15,57 +15,71 @@ class ChatView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(100),
-          child: AppBar(
-            elevation: 3,
-            automaticallyImplyLeading: false,
-            flexibleSpace: Container(
-              margin: EdgeInsetsDirectional.symmetric(
-                  vertical: 20, horizontal: (1.sw > 550) ? 0.27.sw : 20.w),
-              padding: const EdgeInsetsDirectional.only(
-                start: 20,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        chat.secondUser.username,
-                        style: getBoldStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                      ElevatedButton.icon(
-                        onPressed: () => Navigator.pushNamed(
-                            context, Routes.newRequestRoute),
-                        label: const Text('إنشاء طلب مباشر'),
-                        icon: const Icon(Icons.call),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+        appBar: AppBar(
+          elevation: 3,
+          title: Text(
+            chat.secondUser.username,
+            style: getBoldStyle(
+              fontSize: 20,
             ),
           ),
+          actions: [
+            Padding(
+              padding: EdgeInsets.all(8.h),
+              child: ElevatedButton.icon(
+                onPressed: () =>
+                    Navigator.pushNamed(context, Routes.newRequestRoute),
+                label: const Text('إنشاء طلب مباشر'),
+                icon: const Icon(Icons.call),
+              ),
+            ),
+          ],
+          // automaticallyImplyLeading: false,
+          // flexibleSpace: Container(
+          //   margin: EdgeInsetsDirectional.symmetric(
+          //       vertical: 20, horizontal: (1.sw > 550) ? 0.27.sw : 20.w),
+          //   padding: const EdgeInsetsDirectional.only(
+          //     start: 20,
+          //   ),
+          //   child: Column(
+          //     crossAxisAlignment: CrossAxisAlignment.start,
+          //     children: [
+          //       Row(
+          //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //         children: [
+          // Text(
+          //   chat.secondUser.username,
+          //   style: getBoldStyle(
+          //     fontSize: 20,
+          //   ),
+          // ),
+          // ElevatedButton.icon(
+          //   onPressed: () => Navigator.pushNamed(
+          //       context, Routes.newRequestRoute),
+          //   label: const Text('إنشاء طلب مباشر'),
+          //   icon: const Icon(Icons.call),
+          // ),
+          //         ],
+          //       ),
+          //     ],
+          //   ),
+          // ),
         ),
-        body: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 20.w,
-          ),
+        body: Container(
+          color: Colors.white,
+          margin: EdgeInsets.symmetric(horizontal: 1.sw > 900 ? 0.2.sw : 0),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             children: [
               Expanded(
-                child: ListView.builder(
+                child: ListView.separated(
                   physics: const AlwaysScrollableScrollPhysics(
                     parent: BouncingScrollPhysics(),
                   ),
                   reverse: true,
                   itemCount: chat.chat.length,
                   itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5),
+                    padding: const EdgeInsets.symmetric(vertical: 7),
                     child: InboxItem(
                       title: chat.chat[index].sender.username,
                       middleText: chat.chat[index].content,
@@ -79,13 +93,14 @@ class ChatView extends StatelessWidget {
                       circleAvatarRadius: 18,
                     ),
                   ),
+                  separatorBuilder: (context, index) => const Divider(),
                 ),
               ),
               // const TextField(),
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavBar(
+        bottomNavigationBar: const BottomNavBar(
           currentRoute: Routes.chatRoute,
         ),
       ),

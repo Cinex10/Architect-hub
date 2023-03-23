@@ -2,14 +2,13 @@ import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
 import 'package:architect_hub/ressources/components/message_list.dart';
 import 'package:architect_hub/ressources/components/notification_list.dart';
 import 'package:architect_hub/ressources/components/text_with_notification_count.dart';
-import 'package:architect_hub/ressources/enums/status.dart';
 import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
 import 'package:architect_hub/ressources/values_manager.dart';
 import 'package:architect_hub/viewmodel/inbox_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:shimmer/shimmer.dart';
 
 class InboxView extends StatefulWidget {
   const InboxView({super.key});
@@ -36,7 +35,7 @@ class _InboxViewState extends State<InboxView> {
         child: Builder(builder: (context) {
           return Scaffold(
             appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(120),
+              preferredSize: Size.fromHeight(110.h),
               child: AppBar(
                 automaticallyImplyLeading: false,
                 elevation: 1,

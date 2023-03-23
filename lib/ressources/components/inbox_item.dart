@@ -34,57 +34,54 @@ class InboxItem extends StatelessWidget {
           (isDirectionReversed) ? TextDirection.ltr : TextDirection.rtl,
       child: GestureDetector(
         onTap: onTap,
-        child: SizedBox(
-          // height: 80,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CircleAvatar(
-                radius: circleAvatarRadius,
-                backgroundColor: Colors.blue,
-                backgroundImage: const AssetImage('assets/images/1.jpg'),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CircleAvatar(
+              radius: circleAvatarRadius,
+              backgroundColor: Colors.blue,
+              backgroundImage: const AssetImage('assets/images/1.jpg'),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    title,
+                    style: (titleStyle != null)
+                        ? titleStyle
+                        : !isHighlighted
+                            ? getRegularStyle(
+                                fontSize: 16, color: Colors.black54)
+                            : getBoldStyle(fontSize: 16),
+                  ),
+                  if (middleText != null)
                     Text(
-                      title,
-                      style: (titleStyle != null)
-                          ? titleStyle
-                          : !isHighlighted
-                              ? getRegularStyle(
-                                  fontSize: 16, color: Colors.black54)
-                              : getBoldStyle(fontSize: 16),
-                    ),
-                    if (middleText != null)
-                      Text(
-                        middleText!,
-                        style: (middleTextStyle != null)
-                            ? middleTextStyle
-                            : !isHighlighted
-                                ? getRegularStyle(
-                                    fontSize: 13, color: Colors.black54)
-                                : getBoldStyle(fontSize: 13),
-                      ),
-                    Text(
-                      thirdLineText,
-                      style: (thirdLineTextStyle != null)
-                          ? thirdLineTextStyle!
+                      middleText!,
+                      style: (middleTextStyle != null)
+                          ? middleTextStyle
                           : !isHighlighted
                               ? getRegularStyle(
                                   fontSize: 13, color: Colors.black54)
                               : getBoldStyle(fontSize: 13),
                     ),
-                  ],
-                ),
+                  Text(
+                    thirdLineText,
+                    style: (thirdLineTextStyle != null)
+                        ? thirdLineTextStyle!
+                        : !isHighlighted
+                            ? getRegularStyle(
+                                fontSize: 13, color: Colors.black54)
+                            : getBoldStyle(fontSize: 13),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

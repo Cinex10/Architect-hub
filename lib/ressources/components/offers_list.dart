@@ -62,9 +62,8 @@ class OffersList extends StatelessWidget {
         verticalGridSpacing: 20,
         horizontalGridMargin: 0,
         verticalGridMargin: 20,
-        minItemWidth: 320,
+        minItemWidth: 400,
         minItemsPerRow: 1,
-        maxItemsPerRow: 6,
         listViewBuilderOptions: ListViewBuilderOptions(
           physics: getScrollPhysics(),
         ),
@@ -73,15 +72,6 @@ class OffersList extends StatelessWidget {
           (index) => getItemBuilder(context, index),
         ),
       ),
-      // child: ListView.separated(
-      //   separatorBuilder: (context, index) => const SizedBox(
-      //     height: 20,
-      //   ),
-      //   physics: getScrollPhysics(),
-      //   padding: const EdgeInsets.only(top: 20),
-      //   itemCount: getItemCount(),
-      //   itemBuilder: (context, index) => getItemBuilder(context, index),
-      // ),
     );
   }
 }

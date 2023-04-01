@@ -22,7 +22,10 @@ samples, guidance on mobile development, and a full API reference.
 
 - [x] The property picture shall show in full screen when clicked. With the slider enabled.
 
-- [ ] Responsiveness
+- Attached picture 8.1 of the requirement.
+- Attached picture 8.2 of the response when clicked. Nothing happens.
+
+- [x] Responsiveness
 
 - Attached picture 5.1 of the requirement
 
@@ -34,11 +37,11 @@ samples, guidance on mobile development, and a full API reference.
 
 - Attchaed pictures 2.2 and 2.3 for the result. Nothing happens on click. Expected either no results found or some dummy result.
 
-- [ ] Searchbar bugs:
+- [x] Searchbar bugs:
 - no way to exit the search page.
 - have to click many times to get the search page open.
 - Attached picture 1, 3 for the bugs
-- [ ] Typo: "My rating as customer" doesn't change to "my rating as service provider" when switching to service provider profile. Attached page 4.
+- [x] Typo: "My rating as customer" doesn't change to "my rating as service provider" when switching to service provider profile. Attached page 4.
 
 - [ ] Personal details page and payment page are not there
 - Attached pictures 7.1 for the requirement, 7.2 for the result
@@ -46,6 +49,6 @@ samples, guidance on mobile development, and a full API reference.
 
 - [ ] extra pages delivered: Delivered 11 screens instead of the 8 requested.
 
-- offers screen, buggy. Attached picture 7
+- [x] offers screen, buggy. Attached picture 7
 
 - screens NewRequest, Request details not reachable. Attached picture 8

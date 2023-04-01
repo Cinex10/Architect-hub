@@ -15,69 +15,80 @@ class SearchView extends StatelessWidget {
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(120),
             child: AppBar(
-              leading: const SizedBox(),
+              automaticallyImplyLeading: false,
               elevation: 0,
-              flexibleSpace: Container(
-                margin: EdgeInsetsDirectional.symmetric(
-                    vertical: 20, horizontal: (1.sw > 550) ? 0.27.sw : 20.w),
-                padding: const EdgeInsetsDirectional.only(
-                  start: 20,
-                ),
-                // height: 50,
-                // width: 600,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  border: Border.all(
-                    color: Colors.black12,
+              flexibleSpace: Row(
+                children: [
+                  IconButton(
+                    onPressed: () => Navigator.pop(context),
+                    icon: const Icon(Icons.arrow_back),
                   ),
-                  color: Colors.white,
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black12,
-                      spreadRadius: 0.1,
-                      blurRadius: 6,
-                    ),
-                  ],
-                ),
-                child: Row(
-                  children: [
-                    const Icon(Icons.search),
-                    const Spacer(
-                      flex: 1,
-                    ),
-                    Expanded(
-                      flex: 30,
-                      child: GestureDetector(
-                          onTap: () {},
-                          child: const TextField(
-                            cursorColor: Colors.black,
-                            decoration: InputDecoration(
-                              hintText: 'هاشتاج أو كلمات دلالية',
-                              border: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                            ),
-                          )),
-                    ),
-                    const Spacer(
-                      flex: 10,
-                    ),
-                    Material(
-                      // borderRadius: BorderRadius.circular(20),
-                      color: Colors.white,
-                      shape: const CircleBorder(),
-                      // clipBehavior: Clip.hardEdge,
-                      child: InkWell(
-                        radius: 40,
-                        borderRadius: BorderRadius.circular(20),
-                        onTap: () {},
-                        child: const Padding(
-                          padding: EdgeInsets.all(AppPadding.p12),
-                          child: Icon(Icons.close),
-                        ),
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsetsDirectional.symmetric(
+                          vertical: 20,
+                          horizontal: (1.sw > 550) ? 0.27.sw : 20.w),
+                      padding: const EdgeInsetsDirectional.only(
+                        start: 20,
                       ),
-                    )
-                  ],
-                ),
+                      // height: 50,
+                      // width: 600,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        border: Border.all(
+                          color: Colors.black12,
+                        ),
+                        color: Colors.white,
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black12,
+                            spreadRadius: 0.1,
+                            blurRadius: 6,
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.search),
+                          const Spacer(
+                            flex: 1,
+                          ),
+                          Expanded(
+                            flex: 30,
+                            child: GestureDetector(
+                                onTap: () {},
+                                child: const TextField(
+                                  cursorColor: Colors.black,
+                                  decoration: InputDecoration(
+                                    hintText: 'هاشتاج أو كلمات دلالية',
+                                    border: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                  ),
+                                )),
+                          ),
+                          const Spacer(
+                            flex: 10,
+                          ),
+                          Material(
+                            // borderRadius: BorderRadius.circular(20),
+                            color: Colors.white,
+                            shape: const CircleBorder(),
+                            // clipBehavior: Clip.hardEdge,
+                            child: InkWell(
+                              radius: 40,
+                              borderRadius: BorderRadius.circular(20),
+                              onTap: () {},
+                              child: const Padding(
+                                padding: EdgeInsets.all(AppPadding.p12),
+                                child: Icon(Icons.close),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
               backgroundColor: Colors.white,
               bottom: const TabBar(

@@ -31,7 +31,7 @@ class ContentRepository extends BaseContentRepository {
 
   @override
   Future<List<OffreModel>> getOffers(int idRequest) async {
-    return await Future.delayed(const Duration(seconds: 3)).then((_) async {
+    return await Future.delayed(const Duration(seconds: 1)).then((_) async {
       final String response =
           await rootBundle.loadString('assets/dummy_data/offres.json');
       final data = jsonDecode(response);

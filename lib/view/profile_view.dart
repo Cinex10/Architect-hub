@@ -1,5 +1,6 @@
 import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
 import 'package:architect_hub/ressources/components/image_carousel.dart';
+import 'package:architect_hub/ressources/components/portfolio_item.dart';
 import 'package:architect_hub/ressources/extensions/datetime_extension.dart';
 import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
@@ -175,9 +176,8 @@ class _ProfileViewState extends State<ProfileView> {
                     onTap: () {
                       showDialog(
                         context: context,
-                        builder: (context) => ImagesCarousel(
-                          initialIndex: index,
-                          images: const [
+                        builder: (context) => const ImageCarouselWithIndicator(
+                          images: [
                             'assets/images/1.jpg',
                             'assets/images/2.jpg',
                             'assets/images/1.jpg',

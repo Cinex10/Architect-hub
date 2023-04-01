@@ -51,10 +51,8 @@ class FilterBox extends StatelessWidget {
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 20,
-                  horizontal: 25,
-                ),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
                 child: Consumer<FilterViewModel>(
                     builder: (context, filterViewModel, _) {
                   return Column(
@@ -138,32 +136,6 @@ class FilterBox extends StatelessWidget {
                             ),
                           ),
                         ),
-                        // children: [
-                        //   Chip(
-                        //     // selected chip style
-                        //     backgroundColor: Colors.black,
-                        //     shadowColor: Colors.black,
-                        //     elevation: 9,
-                        //     label: const Text('Villas'),
-                        //     // selected chip label style
-                        //     labelStyle: getMediumStyle(
-                        //       color: Colors.white,
-                        //       fontSize: AppSize.s14,
-                        //     ),
-                        //   ),
-                        //   const Chip(
-                        //     label: Text('Apartment'),
-                        //   ),
-                        //   const Chip(
-                        //     label: Text('Office'),
-                        //   ),
-                        //   const Chip(
-                        //     label: Text('Medical'),
-                        //   ),
-                        //   const Chip(
-                        //     label: Text('Shop'),
-                        //   ),
-                        // ],
                       ),
                       const SizedBox(
                         height: 10,
@@ -223,23 +195,21 @@ class FilterBox extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const Spacer(
-                              // flex: 3,
-                              ),
-                          Expanded(
-                            flex: 4,
-                            child: SwitchListTile(
-                              // activeColor: Colors.black,
-                              title: const FittedBox(
-                                child: Text(
-                                  'باحتساب المواد',
-                                ),
-                              ),
-                              value: filterViewModel
-                                  .filterModel.isIncludeMaterials,
-                              onChanged: (value) =>
-                                  filterViewModel.updateIncludeMaterials(value),
+                          const Spacer(),
+                          const FittedBox(
+                            child: Text(
+                              'باحتساب المواد',
                             ),
+                          ),
+                          Switch(
+                            // activeColor: Colors.black,
+                            value:
+                                filterViewModel.filterModel.isIncludeMaterials,
+                            onChanged: (value) =>
+                                filterViewModel.updateIncludeMaterials(value),
+                          ),
+                          const Spacer(
+                            flex: 3,
                           ),
                         ],
                       ),
@@ -291,7 +261,7 @@ class FilterBox extends StatelessWidget {
             height: 2,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

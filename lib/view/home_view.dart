@@ -35,64 +35,81 @@ class _HomeViewState extends State<HomeView> {
               automaticallyImplyLeading: false,
               elevation: 4,
               shadowColor: Colors.black38,
-              flexibleSpace: Container(
-                margin: EdgeInsetsDirectional.symmetric(
-                    vertical: 20, horizontal: (1.sw > 550) ? 0.27.sw : 20.w),
-                padding: const EdgeInsetsDirectional.only(
-                  start: 20,
+              flexibleSpace: GestureDetector(
+                onTap: () => Navigator.pushNamed(
+                  context,
+                  Routes.searchRoute,
                 ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  border: Border.all(
-                    color: Colors.black12,
+                child: Container(
+                  margin: EdgeInsetsDirectional.symmetric(
+                      vertical: 20, horizontal: (1.sw > 550) ? 0.27.sw : 20.w),
+                  padding: const EdgeInsetsDirectional.only(
+                    start: 20,
                   ),
-                  color: Colors.white,
-                  boxShadow: const [
-                    BoxShadow(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    border: Border.all(
                       color: Colors.black12,
-                      spreadRadius: 0.1,
-                      blurRadius: 6,
                     ),
-                  ],
-                ),
-                child: GestureDetector(
-                  onTap: () => Navigator.pushNamed(
-                    context,
-                    Routes.searchRoute,
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black12,
+                        spreadRadius: 0.1,
+                        blurRadius: 6,
+                      ),
+                    ],
                   ),
                   child: Row(
                     children: [
                       const Icon(Icons.search),
                       const Spacer(),
-                      const Text(
-                        'إسم المصمم',
-                        style: TextStyle(
-                          color: Colors.black54,
-                          fontSize: 15,
+                      const Expanded(
+                        flex: 14,
+                        child: Text(
+                          'إسم المصمم',
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: 15,
+                          ),
                         ),
                       ),
-                      const Spacer(
-                        flex: 10,
-                      ),
+                      // const Spacer(
+                      //   flex: 10,
+                      // ),
                       Material(
                         color: Colors.white,
                         shape: const CircleBorder(),
                         child: InkWell(
                           radius: 40,
                           borderRadius: BorderRadius.circular(20),
-                          onTap: () => showModalBottomSheet(
-                            context: context,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(10),
-                              ),
-                            ),
-                            backgroundColor: Colors.white,
-                            builder: (context) => Padding(
-                              padding: MediaQuery.of(context).viewInsets,
-                              child: const FilterBox(),
-                            ),
-                          ),
+                          onTap: () => (1.sw > 900)
+                              ? showDialog(
+                                  context: context,
+                                  builder: (context) => Container(
+                                    margin: EdgeInsets.symmetric(
+                                      horizontal: 1.sw > 900 ? 0.2.sw : 10,
+                                      vertical: 100.h,
+                                    ),
+                                    child: Material(
+                                      borderRadius: BorderRadius.circular(15),
+                                      child: const FilterBox(),
+                                    ),
+                                  ),
+                                )
+                              : showModalBottomSheet(
+                                  context: context,
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(10),
+                                    ),
+                                  ),
+                                  backgroundColor: Colors.white,
+                                  builder: (context) => Padding(
+                                    padding: MediaQuery.of(context).viewInsets,
+                                    child: const FilterBox(),
+                                  ),
+                                ),
                           child: const Padding(
                             padding: EdgeInsets.all(12.0),
                             child: Icon(Icons.filter_alt_outlined),

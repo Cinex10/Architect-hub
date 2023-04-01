@@ -19,20 +19,26 @@ class VerticalLabel extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          label,
-          textAlign: TextAlign.center,
+        FittedBox(
+          child: Text(
+            label,
+            textAlign: TextAlign.center,
+          ),
         ),
-        Text(
-          text,
-          textAlign: TextAlign.center,
-          style: getSemiBoldStyle(fontSize: 14),
-        ),
-        if (thirdText != null)
-          Text(
-            thirdText!,
+        FittedBox(
+          child: Text(
+            text,
             textAlign: TextAlign.center,
             style: getSemiBoldStyle(fontSize: 14),
+          ),
+        ),
+        if (thirdText != null)
+          FittedBox(
+            child: Text(
+              thirdText!,
+              textAlign: TextAlign.center,
+              style: getSemiBoldStyle(fontSize: 14),
+            ),
           ),
       ],
     );

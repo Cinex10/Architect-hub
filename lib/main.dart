@@ -7,6 +7,7 @@ import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/theme_manager.dart';
 import 'package:architect_hub/view/home_view.dart';
 import 'package:architect_hub/view/login_view.dart';
+import 'package:architect_hub/view/offers_view.dart';
 import 'package:architect_hub/viewmodel/favorite_viewmodel.dart';
 import 'package:architect_hub/viewmodel/filter_viewmodel.dart';
 import 'package:architect_hub/viewmodel/home_viewmodel.dart';
@@ -63,7 +64,7 @@ void main() async {
             home: child,
           );
         },
-        child: const HomeView(),
+        child: const OffersView(idRequest: 1),
       ),
     ),
   );

@@ -16,7 +16,7 @@ class SettingView extends StatelessWidget {
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         color: Colors.white,
-        margin: EdgeInsets.symmetric(horizontal: 1.sw > 900 ? 0.2.sw : 10),
+        // margin: EdgeInsets.symmetric(horizontal: 1.sw > 900 ? 0.2.sw : 10),
         child: Column(
           children: [
             const Spacer(),
@@ -87,15 +87,19 @@ class SettingView extends StatelessWidget {
               endIndent: 20,
               indent: 20,
             ),
-            ListTile(
-              leading: const Icon(Icons.star_rate_rounded),
-              title: const Text('تقييماتي كعميل'),
-              trailing: const Icon(
-                Icons.arrow_back_ios_new_rounded,
-                size: 17,
-              ),
-              onTap: () {},
-            ),
+            Consumer<UserViewModel>(builder: (context, viewmodel, _) {
+              return ListTile(
+                leading: const Icon(Icons.star_rate_rounded),
+                title: (viewmodel.isServiceProvider)
+                    ? const Text('تقييماتي كمقدم خدمة')
+                    : const Text('تقييماتي كعميل'),
+                trailing: const Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  size: 17,
+                ),
+                onTap: () {},
+              );
+            }),
             const Divider(
               height: 2,
               color: Colors.black45,

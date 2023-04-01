@@ -28,7 +28,7 @@ class _OffersViewState extends State<OffersView> {
 
   @override
   Widget build(BuildContext context) {
-    print(ModalRoute.of(context)!.settings.arguments);
+    // print(ModalRoute.of(context)!.settings.arguments);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(

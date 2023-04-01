@@ -1,12 +1,13 @@
 import 'package:architect_hub/ressources/components/bottom_navigation_bar.dart';
+import 'package:architect_hub/ressources/components/image_carousel.dart';
 import 'package:architect_hub/ressources/extensions/datetime_extension.dart';
 import 'package:architect_hub/ressources/routes_manager.dart';
 import 'package:architect_hub/ressources/styles_manager.dart';
-import 'package:architect_hub/viewmodel/request_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:readmore/readmore.dart';
 import 'package:responsive_grid_list/responsive_grid_list.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
@@ -16,11 +17,9 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
-  final RequestsViewModel _requestsViewModel = RequestsViewModel();
   @override
   void initState() {
     super.initState();
-    _requestsViewModel.getRequests();
   }
 
   @override
@@ -176,8 +175,14 @@ class _ProfileViewState extends State<ProfileView> {
                     onTap: () {
                       showDialog(
                         context: context,
-                        builder: (context) => const ImagesCarousel(
-                          image: 'assets/images/1.jpg',
+                        builder: (context) => ImagesCarousel(
+                          initialIndex: index,
+                          images: const [
+                            'assets/images/1.jpg',
+                            'assets/images/2.jpg',
+                            'assets/images/1.jpg',
+                            'assets/images/2.jpg'
+                          ],
                         ),
                       );
                     },
@@ -220,25 +225,6 @@ class _ProfileViewState extends State<ProfileView> {
             currentRoute: Routes.profileRoute,
           ),
         ),
-      ),
-    );
-  }
-}
-
-class ImagesCarousel extends StatelessWidget {
-  const ImagesCarousel({
-    super.key,
-    required this.image,
-  });
-
-  final String image;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 1.sw > 900 ? 0.2.sw : 10),
-      child: Image.asset(
-        image,
       ),
     );
   }

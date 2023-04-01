@@ -32,6 +32,7 @@ class _HomeViewState extends State<HomeView> {
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(120),
             child: AppBar(
+              automaticallyImplyLeading: false,
               elevation: 4,
               shadowColor: Colors.black38,
               flexibleSpace: Container(

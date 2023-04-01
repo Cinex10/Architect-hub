@@ -20,10 +20,7 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Unachieved Requirement:
 
-- [ ] The property picture shall show in full screen when clicked. With the slider enabled.
-
-- Attached picture 8.1 of the requirement.
-- Attached picture 8.2 of the response when clicked. Nothing happens.
+- [x] The property picture shall show in full screen when clicked. With the slider enabled.
 
 - [ ] Responsiveness
 
